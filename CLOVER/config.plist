@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>#Comment</key>
-	<string>This file is for 10.12.6+ with native KabyLake support</string>
 	<key>ACPI</key>
 	<dict>
 		<key>DSDT</key>
@@ -12,7 +10,17 @@
 			<false/>
 			<key>Fixes</key>
 			<dict>
-				<key>AddPNLF_1000000</key>
+				<key>FIX_RTC_20000</key>
+				<true/>
+				<key>FIX_TMR_40000</key>
+				<true/>
+				<key>FIX_WAK_200000</key>
+				<true/>
+				<key>FixHPET_0010</key>
+				<true/>
+				<key>FixIPIC_0040</key>
+				<true/>
+				<key>FixShutdown_0004</key>
 				<true/>
 				<key>NewWay_8000000</key>
 				<true/>
@@ -65,7 +73,7 @@
 					<key>Comment</key>
 					<string>change SMEE to XMEE, brightness keys, use with XSID patch</string>
 					<key>Disabled</key>
-					<true/>
+					<false/>
 					<key>Find</key>
 					<data>
 					U01FRQE=
@@ -121,7 +129,7 @@
 					<key>Comment</key>
 					<string>change Method(GPRW,2,N) to XPRW, pair with SSDT-PRW.aml</string>
 					<key>Disabled</key>
-					<true/>
+					<false/>
 					<key>Find</key>
 					<data>
 					R1BSVwI=
@@ -163,7 +171,7 @@
 					<key>Comment</key>
 					<string>chang BRT6 to BRTX</string>
 					<key>Disabled</key>
-					<false/>
+					<true/>
 					<key>Find</key>
 					<data>
 					IEJSVDY=
@@ -181,47 +189,9 @@
 		<array>
 			<dict>
 				<key>Signature</key>
-				<string>BGRT</string>
-			</dict>
-			<dict>
-				<key>Signature</key>
-				<string>DBG2</string>
-			</dict>
-			<dict>
-				<key>Signature</key>
-				<string>DBGP</string>
-			</dict>
-			<dict>
-				<key>Signature</key>
-				<string>DMAR</string>
-			</dict>
-			<dict>
-				<key>Signature</key>
-				<string>FACP</string>
-			</dict>
-			<dict>
-				<key>Signature</key>
-				<string>FIDT</string>
-			</dict>
-			<dict>
-				<key>Signature</key>
-				<string>FPDT</string>
-			</dict>
-			<dict>
-				<key>Signature</key>
-				<string>LPIT</string>
-			</dict>
-			<dict>
-				<key>Signature</key>
-				<string>MCFG</string>
-			</dict>
-			<dict>
-				<key>Signature</key>
-				<string>SLIC</string>
-			</dict>
-			<dict>
-				<key>Signature</key>
-				<string>RSDT</string>
+				<string>SSDT</string>
+				<key>TableId</key>
+				<string>xh_rvp10</string>
 			</dict>
 		</array>
 		<key>ResetAddress</key>
@@ -246,7 +216,6 @@
 			<string>SSDT-SMBUS.aml</string>
 			<string>SSDT-SMEE.aml</string>
 			<string>SSDT-IGPU.aml</string>
-			<string>SSDT-Config.aml</string>
 			<string>SSDT-HDEF.aml</string>
 			<string>SSDT-XOSI.aml</string>
 			<string>SSDT-PNLF.aml</string>
@@ -254,14 +223,13 @@
 			<string>SSDT-LPC.aml</string>
 			<string>SSDT-UIAC.aml</string>
 			<string>SSDT-PRW.aml</string>
-			<string>SSDT-Dell_FN.aml</string>
-			<string>SSDT-DiscreteSpoof.aml</string>
+			<string>ssdt.aml</string>
 		</array>
 	</dict>
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>-disablegfxfirmware -cpufdbg -cpufbeta -igfxbeta</string>
+		<string>darkwake=8 -disablegfxfirmware</string>
 		<key>DefaultVolume</key>
 		<string>macOS</string>
 		<key>NeverHibernate</key>
@@ -288,7 +256,7 @@
 				<key>Device</key>
 				<string>IntelGFX</string>
 				<key>Disabled</key>
-				<true/>
+				<false/>
 				<key>Key</key>
 				<string>model</string>
 				<key>Value</key>
@@ -298,7 +266,7 @@
 				<key>Device</key>
 				<string>IntelGFX</string>
 				<key>Disabled</key>
-				<true/>
+				<false/>
 				<key>Key</key>
 				<string>hda-gfx</string>
 				<key>Value</key>
@@ -307,19 +275,17 @@
 		</array>
 		<key>Audio</key>
 		<dict>
-			<key>AFGLowPowerState</key>
-			<true/>
-			<key>ResetHDA</key>
-			<true/>
+			<key>Inject</key>
+			<string>13</string>
 		</dict>
 		<key>NoDefaultProperties</key>
 		<true/>
 		<key>USB</key>
 		<dict>
-			<key>AddClockID</key>
-			<true/>
 			<key>FixOwnership</key>
 			<true/>
+			<key>Inject</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>DisableDrivers</key>
@@ -328,9 +294,12 @@
 	</array>
 	<key>GUI</key>
 	<dict>
+		<key>ConsoleMode</key>
+		<string>Max</string>
 		<key>Hide</key>
 		<array>
 			<string>Preboot</string>
+			<string>Recovery</string>
 		</array>
 		<key>Mouse</key>
 		<dict>
@@ -351,7 +320,7 @@
 		<key>ScreenResolution</key>
 		<string>1920x1080</string>
 		<key>Theme</key>
-		<string>maverickslogin</string>
+		<string>SimpleThemeDark</string>
 	</dict>
 	<key>Graphics</key>
 	<dict>
@@ -365,27 +334,25 @@
 			<key>ATI</key>
 			<false/>
 			<key>Intel</key>
-			<false/>
+			<true/>
 			<key>NVidia</key>
 			<false/>
 		</dict>
+		<key>ig-platform-id</key>
+		<string>0x59260002</string>
 	</dict>
 	<key>KernelAndKextPatches</key>
 	<dict>
 		<key>AppleIntelCPUPM</key>
 		<false/>
-		<key>AppleRTC</key>
-		<false/>
 		<key>DellSMBIOSPatch</key>
 		<true/>
 		<key>KernelCpu</key>
 		<false/>
-		<key>KernelHaswellE</key>
-		<false/>
 		<key>KernelLapic</key>
 		<false/>
 		<key>KernelPm</key>
-		<false/>
+		<true/>
 		<key>KernelToPatch</key>
 		<array>
 			<dict>
@@ -403,6 +370,8 @@
 				</data>
 			</dict>
 		</array>
+		<key>KernelXCPM</key>
+		<false/>
 		<key>KextsToPatch</key>
 		<array>
 			<dict>
@@ -573,7 +542,7 @@
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>C02743802OPFF4NFB</string>
+		<string>C02722104GUDNY31M</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
@@ -601,7 +570,7 @@
 		<key>ProductName</key>
 		<string>MacBookPro14,1</string>
 		<key>SerialNumber</key>
-		<string>C02VM1Q9HV29</string>
+		<string>C02TTPRUHV29</string>
 		<key>Version</key>
 		<string>1.0</string>
 	</dict>
