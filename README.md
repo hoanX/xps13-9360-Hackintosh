@@ -24,7 +24,7 @@
 - 更新AppleALC最新release版
 - 加入shiki.kext驱动，修复itunes 无故退出
 - 更新主题Kuke
-- 先到这，有时间更新
+- clover界面多了很多无用的启动项，不知道为什么无法屏蔽！！！
 
 ## Credit
 [the-darkvoid](https://github.com/the-darkvoid/XPS9360-macOS)
