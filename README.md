@@ -18,7 +18,14 @@
 >  ```
 > - 不完善：读卡器不工作，雷电口可以hdmi热插拔，但是部分设备无法热插拔（试了手机，2头type-c线连接），也需要冷启动（手机连接需要开机前插上）
 
+### 2018-03-17
+
+- 更新clover到4418
+- 触摸板替换为VoodooI2C，使用更加灵敏
+- Applealc，IntelGraphicsFixup，Lilu驱动版本更新
+
 ### 2018-01-24
+
 - 更新clover到4380
 - 更新hotpatch文件，无需注入显卡id，自动识别，同样也支持其它cpu
 - 更新AppleALC最新release版
