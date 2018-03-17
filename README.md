@@ -23,6 +23,8 @@
 - 雷电3可以热插拔了
 - 触摸板替换为VoodooI2C，使用更加灵敏
 - Applealc，IntelGraphicsFixup，Lilu驱动版本更新
+- 关于无用启动引导也好了，clover configurator版本问题，导致配置有问题
+
 
 ### 2018-01-24
 
