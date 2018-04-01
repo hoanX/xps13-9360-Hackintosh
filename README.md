@@ -15,6 +15,38 @@
 >    sudo kextcache -i /
 >  ```
 
+## 安装注意事项（很重要）：
+
+---------------------
+
+### 由于主板默认dvmt显存32M，所以FHD屏幕修改至少64M，QHD至少96M
+
+#### 修改方法：
+
+**方式一**（推荐）：此方法有风险，目前bios在2.3.1到2.6.2中参数可用，其它自行测试
+
+使用DVMT目录下的DVMT.efi引导启动，0x785是DVMT Pre-allocation，首先命令 `setup_var 0x785` 回车，查看有无返回值，未修改是返回0x01(32M),如果没有返回值，切勿继续尝试以下操作
+
+之后修改一下三个参数`0x4de`  `0x785` `0x786` ,命令分别为：
+
+ `setup_var 0x4de 0x00 ` 
+
+ `setup_var 0x785 0x06 `  :这里我直接设置到192M
+
+ `setup_var 0x486 0x03 ` 
+
+| Variable              | Offset | Default value  | Desired value   | Comment                                                    |
+| --------------------- | ------ | -------------- | --------------- | ---------------------------------------------------------- |
+| CFG Lock              | 0x4de  | 0x01 (Enabled) | 0x00 (Disabled) | Disable CFG Lock to prevent MSR 0x02 errors on boot        |
+| DVMT Pre-allocation   | 0x785  | 0x01 (32M)     | 0x06 (192M)     | Increase DVMT pre-allocated size to 192M for QHD+ displays |
+| DVMT Total Gfx Memory | 0x786  | 0x01 (128M)    | 0x03 (MAX)      | Increase total gfx memory limit to maximum                 |
+
+
+
+方法二：将DVMT下的IntelGraphicsDVMTFixup.kext驱动放到clover/kexts/other下，有时候可能不起作用
+
+-----------------
+
 ### 2018-03-31
 
 - 精简无用项
