@@ -317,7 +317,7 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>darkwake=0 abm_firstpolldelay=16000 brcmfx-country=#a</string>
+		<string>darkwake=0 abm_firstpolldelay=16000</string>
 		<key>DefaultVolume</key>
 		<string>macOS</string>
 		<key>HibernationFixup</key>
