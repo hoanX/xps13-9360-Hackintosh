@@ -332,7 +332,7 @@
 		<key>Timeout</key>
 		<integer>2</integer>
 		<key>XMPDetection</key>
-		<false/>
+		<integer>1</integer>
 	</dict>
 	<key>CPU</key>
 	<dict>
@@ -408,8 +408,6 @@
 			<key>Tool</key>
 			<true/>
 		</dict>
-		<key>ScreenResolution</key>
-		<string>3200x1800</string>
 		<key>ShowOptimus</key>
 		<false/>
 		<key>Theme</key>
