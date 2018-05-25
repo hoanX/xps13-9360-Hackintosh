@@ -316,7 +316,7 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>darkwake=0 abm_firstpolldelay=16000</string>
+		<string>-v darkwake=0 abm_firstpolldelay=16000</string>
 		<key>DefaultVolume</key>
 		<string>macOS</string>
 		<key>HibernationFixup</key>
