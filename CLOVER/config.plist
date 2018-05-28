@@ -19,7 +19,7 @@
 			<key>Fixes</key>
 			<dict>
 				<key>FixMutex</key>
-				<false/>
+				<true/>
 				<key>FixWAK</key>
 				<false/>
 			</dict>
@@ -251,7 +251,7 @@
 					<key>Comment</key>
 					<string>Rename XTBT to YTBT and use with SSDT-YTBT.aml for USB-C hot plug</string>
 					<key>Disabled</key>
-					<false/>
+					<true/>
 					<key>Find</key>
 					<data>
 					pABYVEJU
@@ -265,6 +265,21 @@
 			<key>ReuseFFFF</key>
 			<false/>
 		</dict>
+		<key>DropTables</key>
+		<array>
+			<dict>
+				<key>Signature</key>
+				<string>SSDT</string>
+				<key>TableId</key>
+				<string>xh_rvp07</string>
+			</dict>
+			<dict>
+				<key>Signature</key>
+				<string>SSDT</string>
+				<key>TableId</key>
+				<string>PtidDevc</string>
+			</dict>
+		</array>
 		<key>FixHeaders</key>
 		<true/>
 		<key>ResetAddress</key>
@@ -318,7 +333,7 @@
 		<key>Arguments</key>
 		<string>-v darkwake=0 abm_firstpolldelay=16000</string>
 		<key>DefaultVolume</key>
-		<string>macOS</string>
+		<string>LastBootedVolume</string>
 		<key>HibernationFixup</key>
 		<false/>
 		<key>NeverHibernate</key>
@@ -346,26 +361,7 @@
 		<key>Audio</key>
 		<dict>
 			<key>Inject</key>
-			<string>0</string>
-		</dict>
-		<key>FakeID</key>
-		<dict>
-			<key>ATI</key>
-			<string>0x0</string>
-			<key>IMEI</key>
-			<string>0x0</string>
-			<key>IntelGFX</key>
-			<string>0x0</string>
-			<key>LAN</key>
-			<string>0x0</string>
-			<key>NVidia</key>
-			<string>0x0</string>
-			<key>SATA</key>
-			<string>0x0</string>
-			<key>WIFI</key>
-			<string>0x0</string>
-			<key>XHCI</key>
-			<string>0x0</string>
+			<integer>0</integer>
 		</dict>
 		<key>USB</key>
 		<dict>
