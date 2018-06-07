@@ -51,6 +51,11 @@ ssd：PM961
 
 -----------------
 
+### 2018-06-07
+
+- 尝试修复iris 640有时唤醒黑屏问题，参考[syscl](https://github.com/syscl/XPS9350-macOS)的iris 540补丁
+- 更新smbios部分信息
+
 ### 2018-05-28
 
 - Clover更新到4497

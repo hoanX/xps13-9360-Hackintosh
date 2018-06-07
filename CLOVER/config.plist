@@ -481,6 +481,24 @@
 				RiV1VHh4eHgA
 				</data>
 			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Enable lid wake for 0x59260002</string>
+				<key>Disabled</key>
+				<false/>
+				<key>Find</key>
+				<data>
+				CgvjAAAHBgADAAAABAAAAA==
+				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
+				<key>Name</key>
+				<string>AppleIntelKBLGraphicsFramebuffer</string>
+				<key>Replace</key>
+				<data>
+				DwvjAAAHBgADAAAABAAAAA==
+				</data>
+			</dict>
 		</array>
 	</dict>
 	<key>RtVariables</key>
@@ -495,17 +513,17 @@
 	<key>SMBIOS</key>
 	<dict>
 		<key>BiosReleaseDate</key>
-		<string>02/08/2018</string>
+		<string>04/09/2018</string>
 		<key>BiosVendor</key>
 		<string>Apple Inc.</string>
 		<key>BiosVersion</key>
-		<string>MBP141.88Z.0173.B00.1802081002</string>
+		<string>MBP141.88Z.0175.B00.1804091553</string>
 		<key>Board-ID</key>
 		<string>Mac-B4831CEBD52A0C4C</string>
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>C027017004NF116UE</string>
+		<string>C02727802OPDYWD1F</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
@@ -533,7 +551,7 @@
 		<key>ProductName</key>
 		<string>MacBookPro14,1</string>
 		<key>SerialNumber</key>
-		<string>C02T21SXHV29</string>
+		<string>C02V11KMHV29</string>
 		<key>Trust</key>
 		<true/>
 		<key>Version</key>
