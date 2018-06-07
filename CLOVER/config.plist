@@ -337,7 +337,7 @@
 		<key>HibernationFixup</key>
 		<false/>
 		<key>NeverHibernate</key>
-		<true/>
+		<false/>
 		<key>NoEarlyProgress</key>
 		<true/>
 		<key>Secure</key>
@@ -347,7 +347,7 @@
 		<key>Timeout</key>
 		<integer>2</integer>
 		<key>XMPDetection</key>
-		<integer>1</integer>
+		<string>Yes</string>
 	</dict>
 	<key>CPU</key>
 	<dict>
