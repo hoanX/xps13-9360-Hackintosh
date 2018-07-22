@@ -53,6 +53,13 @@ ssd：PM961
 
 ### 2018-06-07
 
+- 更新clover到r4618
+- 更新smbios信息
+- 更新部分hotpatch文件
+- 更新lilu以及一波驱动，替换[IntelGraphicsFixup](https://github.com/lvs1974/IntelGraphicsFixup)和[Shiki](https://github.com/acidanthera/Shiki)为[WhateverGreen](https://github.com/acidanthera/WhateverGreen)
+
+### 2018-06-07
+
 - 尝试修复iris 640有时唤醒黑屏问题，参考[syscl](https://github.com/syscl/XPS9350-macOS)的iris 540补丁
 - 更新smbios部分信息
 

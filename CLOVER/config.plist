@@ -304,29 +304,6 @@
 				<true/>
 			</dict>
 		</dict>
-		<key>SortedOrder</key>
-		<array>
-			<string>SSDT-XOSI.aml</string>
-			<string>SSDT-Config.aml</string>
-			<string>SSDT-IGPU.aml</string>
-			<string>SSDT-PNLF.aml</string>
-			<string>SSDT-BRT6.aml</string>
-			<string>SSDT-ALS0.aml</string>
-			<string>SSDT-HDEF.aml</string>
-			<string>SSDT-ALC256.aml</string>
-			<string>SSDT-UIAC.aml</string>
-			<string>SSDT-USBX.aml</string>
-			<string>SSDT-PTSWAK.aml</string>
-			<string>SSDT-PRW.aml</string>
-			<string>SSDT-NVME.aml</string>
-			<string>SSDT-DMAC.aml</string>
-			<string>SSDT-MCHC.aml</string>
-			<string>SSDT-MEM2.aml</string>
-			<string>SSDT-PMCR.aml</string>
-			<string>SSDT-I2C.aml</string>
-			<string>SSDT-TYPC.aml</string>
-			<string>SSDT-YTBT.aml</string>
-		</array>
 	</dict>
 	<key>Boot</key>
 	<dict>
@@ -337,7 +314,7 @@
 		<key>HibernationFixup</key>
 		<false/>
 		<key>NeverHibernate</key>
-		<false/>
+		<true/>
 		<key>NoEarlyProgress</key>
 		<true/>
 		<key>Secure</key>
@@ -513,17 +490,17 @@
 	<key>SMBIOS</key>
 	<dict>
 		<key>BiosReleaseDate</key>
-		<string>04/09/2018</string>
+		<string>06/26/2018</string>
 		<key>BiosVendor</key>
 		<string>Apple Inc.</string>
 		<key>BiosVersion</key>
-		<string>MBP141.88Z.0175.B00.1804091553</string>
+		<string>MBP141.88Z.0178.B00.1806260902</string>
 		<key>Board-ID</key>
 		<string>Mac-B4831CEBD52A0C4C</string>
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>C02727802OPDYWD1F</string>
+		<string>C02710207J9F5041F</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
@@ -551,7 +528,7 @@
 		<key>ProductName</key>
 		<string>MacBookPro14,1</string>
 		<key>SerialNumber</key>
-		<string>C02V11KMHV29</string>
+		<string>C02TD26KHV29</string>
 		<key>Trust</key>
 		<true/>
 		<key>Version</key>
