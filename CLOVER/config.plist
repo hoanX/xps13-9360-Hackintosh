@@ -308,7 +308,7 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>-v darkwake=0 abm_firstpolldelay=16000</string>
+		<string>-v darkwake=0</string>
 		<key>DefaultVolume</key>
 		<string>LastBootedVolume</string>
 		<key>HibernationFixup</key>
@@ -325,6 +325,11 @@
 		<integer>2</integer>
 		<key>XMPDetection</key>
 		<string>Yes</string>
+	</dict>
+	<key>BootGraphics</key>
+	<dict>
+		<key>UIScale</key>
+		<integer>2</integer>
 	</dict>
 	<key>CPU</key>
 	<dict>
@@ -500,7 +505,7 @@
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>C02710207J9F5041F</string>
+		<string>C02719270GUFF4J1H</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
@@ -528,7 +533,7 @@
 		<key>ProductName</key>
 		<string>MacBookPro14,1</string>
 		<key>SerialNumber</key>
-		<string>C02TD26KHV29</string>
+		<string>C02TPTYCHV29</string>
 		<key>Trust</key>
 		<true/>
 		<key>Version</key>
