@@ -13,7 +13,7 @@ ssd：PM961
 > - 如果感觉网卡无线频段不够的可以在config中的Boot参数Arguments中添加`brcmfx-country=#a`,重启即可
 > - 如果QHD分辨率设备，在开机第二阶段苹果logo变大，在config的Boot Graphics的UIScale中填入`2`，重启即可
 > - 关于蓝牙问题，将蓝牙目录下BrcmFirmwareData.kext和BrcmPatchRAM2.kext驱动放入clover对应驱动目录即可，BT4LEContiunityFixup.kext是修复Handoff功能，我没有需求，没有添加，自行测试
-> - （低频已不可用，效果不大）~~kexts/cpu低频 文件夹可以使cpu多档变频以及低频支持（最低500）~~
+> - （低频已不可用，效果不大，懒的制作新版本）~~kexts/cpu低频 文件夹可以使cpu多档变频以及低频支持（最低500）~~
 >   - ~~以下二选一~~
 >   - 1. ~~X86PlatformPluginInjector.kext安装到系统的L/E或者S/L/E文件夹下，重建缓存并重启（或者直接使用tools的工具，直接拖进去），目前添加i5-7200u,i7-7500u以及i7-7560u支持~~
 >   - 2. ~~CPUFriend.kext和CPUFriendDataProvider.kext放到clover/kexts/other，重启即可（这个和上面那个效果一样，唯一区别就是这个可以不放到系统中，针对强迫症）~~
