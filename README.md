@@ -50,7 +50,45 @@ ssd：PM961
 
 
 
-方法二：将DVMT下的IntelGraphicsDVMTFixup.kext驱动放到clover/kexts/other下，有时候可能不起作用
+方法二：使用WhateverGreen修复DVMT-Prealloc 32MB,config文件加上设备属性
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Devices</key>
+	<dict>
+		<key>Properties</key>
+		<dict>
+			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
+			<dict>
+				<key>AAPL,ig-platform-id</key>
+				<data>
+				AAAmGQ==
+				</data>
+				<key>device-id</key>
+				<data>
+				JhkAAA==
+				</data>
+				<key>framebuffer-fbmem</key>
+				<data>
+				AACQAA==
+				</data>
+				<key>framebuffer-patch-enable</key>
+				<data>
+				AQAAAA==
+				</data>
+				<key>framebuffer-stolenmem</key>
+				<data>
+				AAAwAQ==
+				</data>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>
+```
 
 -----------------
 
