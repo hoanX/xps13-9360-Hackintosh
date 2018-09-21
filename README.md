@@ -50,45 +50,8 @@ ssd：PM961
 
 
 
-方法二：使用WhateverGreen修复DVMT-Prealloc 32MB,config文件加上设备属性
+方法二：使用WhateverGreen修复DVMT-Prealloc 32MB,（已添加到配置文件中，正常可以生效，不需要修改BIOS的dvmt，我没有测试过）
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>Devices</key>
-	<dict>
-		<key>Properties</key>
-		<dict>
-			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
-			<dict>
-				<key>AAPL,ig-platform-id</key>
-				<data>
-				AAAmGQ==
-				</data>
-				<key>device-id</key>
-				<data>
-				JhkAAA==
-				</data>
-				<key>framebuffer-fbmem</key>
-				<data>
-				AACQAA==
-				</data>
-				<key>framebuffer-patch-enable</key>
-				<data>
-				AQAAAA==
-				</data>
-				<key>framebuffer-stolenmem</key>
-				<data>
-				AAAwAQ==
-				</data>
-			</dict>
-		</dict>
-	</dict>
-</dict>
-</plist>
-```
 -----------------
 
 ### 2018-09-21（可能是最后一次更新10.13.6，等待10.14正式版）
