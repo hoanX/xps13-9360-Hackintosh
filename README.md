@@ -50,7 +50,8 @@ ssd：PM961
 
 
 
-方法二：使用WhateverGreen修复DVMT-Prealloc 32MB,（已添加到配置文件中，正常可以生效，不需要修改BIOS的dvmt，我没有测试过）
+
+**方式二**：使用WhateverGreen修复DVMT-Prealloc 32MB,（已添加到配置文件中，正常可以生效，不需要修改BIOS的dvmt，我没有测试过）
 
 -----------------
 
