@@ -12,6 +12,31 @@
 		<string>0xB2</string>
 		<key>#ResetValue</key>
 		<string>0x73</string>
+		<key>#SortedOrder</key>
+		<array>
+			<string>SSDT-XOSI.aml</string>
+			<string>SSDT-Config.aml</string>
+			<string>SSDT-IGPU.aml</string>
+			<string>SSDT-PNLF.aml</string>
+			<string>SSDT-BRT6.aml</string>
+			<string>SSDT-ALS0.aml</string>
+			<string>SSDT-HDEF.aml</string>
+			<string>SSDT-ALC256.aml</string>
+			<string>SSDT-UIAC.aml</string>
+			<string>SSDT-USBX.aml</string>
+			<string>SSDT-PTSWAK.aml</string>
+			<string>SSDT-PRW.aml</string>
+			<string>SSDT-NVME.aml</string>
+			<string>SSDT-DMAC.aml</string>
+			<string>SSDT-MCHC.aml</string>
+			<string>SSDT-MEM2.aml</string>
+			<string>SSDT-PMCR.aml</string>
+			<string>SSDT-I2C.aml</string>
+			<string>SSDT-TYPC.aml</string>
+			<string>SSDT-YTBT.aml</string>
+		</array>
+		<key>AutoMerge</key>
+		<false/>
 		<key>DSDT</key>
 		<dict>
 			<key>DropOEM_DSM</key>
@@ -282,10 +307,6 @@
 		</array>
 		<key>FixHeaders</key>
 		<true/>
-		<key>ResetAddress</key>
-		<string>0xB2</string>
-		<key>ResetValue</key>
-		<string>0x73</string>
 		<key>SSDT</key>
 		<dict>
 			<key>DropOem</key>
@@ -314,7 +335,7 @@
 		<key>HibernationFixup</key>
 		<false/>
 		<key>NeverHibernate</key>
-		<true/>
+		<false/>
 		<key>NoEarlyProgress</key>
 		<true/>
 		<key>Secure</key>
@@ -335,6 +356,8 @@
 	<dict>
 		<key>HWPEnable</key>
 		<true/>
+		<key>UseARTFrequency</key>
+		<false/>
 	</dict>
 	<key>Devices</key>
 	<dict>
@@ -342,28 +365,43 @@
 		<array/>
 		<key>Audio</key>
 		<dict>
+			<key>AFGLowPowerState</key>
+			<false/>
 			<key>Inject</key>
 			<integer>56</integer>
+			<key>ResetHDA</key>
+			<false/>
 		</dict>
-		<key>FakeID</key>
+		<key>Properties</key>
 		<dict>
-			<key>IntelGFX</key>
-			<string>0x19268086</string>
+			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
+			<dict>
+				<key>AAPL,ig-platform-id</key>
+				<data>
+				AAAmGQ==
+				</data>
+				<key>device-id</key>
+				<data>
+				JhkAAA==
+				</data>
+			</dict>
 		</dict>
 		<key>USB</key>
 		<dict>
 			<key>AddClockID</key>
-			<false/>
+			<true/>
 			<key>FixOwnership</key>
 			<true/>
-			<key>Inject</key>
+			<key>HighCurrent</key>
 			<false/>
+			<key>Inject</key>
+			<true/>
 		</dict>
 	</dict>
 	<key>GUI</key>
 	<dict>
 		<key>CustomIcons</key>
-		<false/>
+		<true/>
 		<key>Hide</key>
 		<array>
 			<string>Preboot</string>
@@ -391,6 +429,8 @@
 			<key>Tool</key>
 			<true/>
 		</dict>
+		<key>ScreenResolution</key>
+		<string>3200x1800</string>
 		<key>ShowOptimus</key>
 		<false/>
 		<key>Theme</key>
@@ -408,12 +448,12 @@
 			<key>ATI</key>
 			<false/>
 			<key>Intel</key>
-			<true/>
+			<false/>
 			<key>NVidia</key>
 			<false/>
 		</dict>
-		<key>ig-platform-id</key>
-		<string>0x19260000</string>
+		<key>LoadVBios</key>
+		<false/>
 	</dict>
 	<key>KernelAndKextPatches</key>
 	<dict>
@@ -461,8 +501,10 @@
 		<string>0x28</string>
 		<key>CsrActiveConfig</key>
 		<string>0x67</string>
-		<key>ROM</key>
-		<string>UseMacAddr0</string>
+		<key>MLB</key>
+		<string>
+C07QJ01TG1J1
+C07539200LCFYRFA5</string>
 	</dict>
 	<key>SMBIOS</key>
 	<dict>
@@ -477,7 +519,7 @@
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>C026085014NDMT3JC</string>
+		<string>C02714306CDF116AD</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
@@ -505,9 +547,9 @@
 		<key>ProductName</key>
 		<string>MacBookPro13,1</string>
 		<key>SerialNumber</key>
-		<string>C02R94ZYGVC1</string>
+		<string>C02TJVYAGVC1</string>
 		<key>SmUUID</key>
-		<string>63D53777-C0C4-40ED-8D7F-14764C28567E</string>
+		<string>58B2BE56-C734-47C5-B616-E3AD8EADE5A5</string>
 		<key>Trust</key>
 		<true/>
 		<key>Version</key>

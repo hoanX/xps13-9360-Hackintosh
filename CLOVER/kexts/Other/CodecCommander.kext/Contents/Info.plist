@@ -70,6 +70,8 @@
 				<string>Realtek ALC283,etc</string>
 				<key>10ec_0292</key>
 				<string>Realtek ALC292</string>
+				<key>10ec_0298</key>
+				<string>Realtek ALC298</string>
 				<key>10ec_0668</key>
 				<string>Realtek ALC668</string>
 				<key>10ec_0892_HDA_1458</key>
@@ -148,7 +150,7 @@
 					<key>Sleep Nodes</key>
 					<false/>
 					<key>Update Nodes</key>
-					<false/>
+					<true/>
 				</dict>
 				<key>Realtek ALC256</key>
 				<dict>
@@ -313,6 +315,46 @@
 					</array>
 					<key>Perform Reset</key>
 					<false/>
+				</dict>
+				<key>Realtek ALC298</key>
+				<dict>
+					<key>Custom Commands</key>
+					<array>
+						<dict>
+							<key>Command</key>
+							<data>
+							AYcHIA==
+							</data>
+							<key>Comment</key>
+							<string>0x18 SET_PIN_WIDGET_CONTROL 0x20</string>
+							<key>On Init</key>
+							<true/>
+							<key>On Sleep</key>
+							<false/>
+							<key>On Wake</key>
+							<true/>
+						</dict>
+						<dict>
+							<key>Command</key>
+							<data>
+							AhcIgw==
+							</data>
+							<key>Comment</key>
+							<string>0x21 SET_UNSOLICITED_ENABLE 0x83</string>
+							<key>On Init</key>
+							<true/>
+							<key>On Sleep</key>
+							<false/>
+							<key>On Wake</key>
+							<true/>
+						</dict>
+					</array>
+					<key>Perform Reset</key>
+					<true/>
+					<key>Send Delay</key>
+					<integer>10</integer>
+					<key>Sleep Nodes</key>
+					<true/>
 				</dict>
 				<key>Realtek ALC668</key>
 				<dict>
