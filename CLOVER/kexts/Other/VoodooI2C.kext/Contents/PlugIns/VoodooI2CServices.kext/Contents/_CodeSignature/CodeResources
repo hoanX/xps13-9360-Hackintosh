@@ -5,26 +5,7 @@
 	<key>files</key>
 	<dict/>
 	<key>files2</key>
-	<dict>
-		<key>PlugIns/VoodooGPIO.kext</key>
-		<dict>
-			<key>cdhash</key>
-			<data>
-			ofMQNkIKdQ6+lSUE9c+4jMmQZ8c=
-			</data>
-			<key>requirement</key>
-			<string>cdhash H"e39ecfb930c9ac01df2a237e9769bc75d81fe8bc" or cdhash H"a1f31036420a750ebe952504f5cfb88cc99067c7"</string>
-		</dict>
-		<key>PlugIns/VoodooI2CServices.kext</key>
-		<dict>
-			<key>cdhash</key>
-			<data>
-			N4+Ld7LU1KabV4EJdeRjwnKx7rk=
-			</data>
-			<key>requirement</key>
-			<string>cdhash H"5f4f42d17f7e4269d09fb4d859cef4b8ce1216a9" or cdhash H"378f8b77b2d4d4a69b57810975e463c272b1eeb9"</string>
-		</dict>
-	</dict>
+	<dict/>
 	<key>rules</key>
 	<dict>
 		<key>^Resources/</key>
@@ -42,6 +23,11 @@
 			<true/>
 			<key>weight</key>
 			<real>1100</real>
+		</dict>
+		<key>^Resources/Base\.lproj/</key>
+		<dict>
+			<key>weight</key>
+			<real>1010</real>
 		</dict>
 		<key>^version.plist$</key>
 		<true/>
@@ -101,6 +87,11 @@
 			<true/>
 			<key>weight</key>
 			<real>1100</real>
+		</dict>
+		<key>^Resources/Base\.lproj/</key>
+		<dict>
+			<key>weight</key>
+			<real>1010</real>
 		</dict>
 		<key>^[^/]+$</key>
 		<dict>
