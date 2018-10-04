@@ -1,20 +1,9 @@
-// This SSDT demonstrates a custom configuration for ALC668.
-//
-// It is reportedly needed to solve a problem with booting
-// OS X after Windows.
-//
-// See here for details:
-// http://www.tonymacx86.com/el-capitan-laptop-support/185808-alc668-no-sound-after-reboot-windows-10-a.html#post1201248
-//
-
-// Customize to suit your needs.
-// Compile to SSDT-ALC668.aml, place in ACPI/patched.  Make sure SortedOrder includes it.
-
 // CodecCommander configuration for ALC256
-DefinitionBlock ("SSDT-ALC256.aml", "SSDT", 1, "hack", "hack", 0x00003000)
+// From: https://github.com/vbourachot/XPS13-9350-OSX/blob/master/ssdt/SSDT-ALC256.dsl
+
+DefinitionBlock ("", "SSDT", 1, "hack", "ALC256", 0x00003000)
 {
     External(_SB.PCI0.HDEF, DeviceObj)
-    
     Name(_SB.PCI0.HDEF.RMCF, Package()
     {
         "CodecCommander", Package()
@@ -55,7 +44,8 @@ DefinitionBlock ("SSDT-ALC256.aml", "SSDT", 1, "hack", "hack", 0x00003000)
                     "On Wake", ">y",
                 },
             },
-            "Perform Reset", ">y",
+            "Perform Reset", ">n",
+            //"Perform Reset on External Wake", ">n", // enable if using AppleALC
             "Send Delay", 10,
             "Sleep Nodes", ">n",
         },
