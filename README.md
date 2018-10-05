@@ -71,7 +71,18 @@
 
 --------
 
-**方式二**：使用WhateverGreen修复DVMT-Prealloc 32MB,（已添加到配置文件中，正常可以生效，不需要修改BIOS的dvmt，我没有测试过，自行测试）
+**方式二**：WhateverGreen貌似不支持10.14~~使用WhateverGreen修复DVMT-Prealloc 32MB,（已添加到配置文件中，正常可以生效，不需要修改BIOS的dvmt，我没有测试过，自行测试）~~
+
+DVMT补丁在KextsToPatch中，默认添加，但是未开启，有需要自行打开
+
+10.14（18A391）：
+
+```html
+Kext: com.apple.driver.AppleIntelSKLGraphicsFramebuffer
+Find: 764048FF 05FDEE07
+Repl: EB4048FF 05FDEE07
+Comment: Disable minStolenSize less or equal fStolenMemorySize assertion, 10.14_18A391 (based on Austere.J patch by Ricky)
+```
 
 -----------------
 

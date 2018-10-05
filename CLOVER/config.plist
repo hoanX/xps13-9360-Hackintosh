@@ -384,18 +384,6 @@
 				<data>
 				JhkAAA==
 				</data>
-				<key>framebuffer-fbmem</key>
-				<data>
-				AACQAA==
-				</data>
-				<key>framebuffer-patch-enable</key>
-				<data>
-				AQAAAA==
-				</data>
-				<key>framebuffer-stolenmem</key>
-				<data>
-				AAAwAQ==
-				</data>
 			</dict>
 		</dict>
 		<key>USB</key>
@@ -520,6 +508,26 @@
 				<key>Replace</key>
 				<data>
 				RiV1VHh4eHgA
+				</data>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>Disable minStolenSize less or equal fStolenMemorySize assertion, 10.14_18A391 (based on Austere.J patch by Ricky)</string>
+				<key>Disabled</key>
+				<true/>
+				<key>Find</key>
+				<data>
+				dkBI/wX97gc=
+				</data>
+				<key>InfoPlistPatch</key>
+				<false/>
+				<key>MatchOS</key>
+				<string>10.14.x</string>
+				<key>Name</key>
+				<string>com.apple.driver.AppleIntelSKLGraphicsFramebuffer</string>
+				<key>Replace</key>
+				<data>
+				60BI/wX97gc=
 				</data>
 			</dict>
 		</array>
