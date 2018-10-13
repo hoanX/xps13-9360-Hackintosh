@@ -86,6 +86,15 @@ Comment: Disable minStolenSize less or equal fStolenMemorySize assertion, 10.14_
 
 -----------------
 
+### 2018-10-13
+
+- 更新clover版本到4700，移除一些不必要efi
+- 使用AppleBacklightFixup.kext（基于Lilu）替代AppleBacklightInjector.kext(优点：可以去除亮度补丁，Recovery中工作，来自)
+- ALC256 Layout-id从Device Properties注入（WhateverGreen支持）
+- USBPower.kext更名为USBPorts.kext
+- 使用4K主题Mojave4k,喜欢原来主题kuke的可以在config的theme修改即可
+- 常规驱动更新
+
 ### 2018-09-27（支持10.14）
 
 - 更新触摸板驱动VoodooI2C到V2.14兼容10.14
