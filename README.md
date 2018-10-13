@@ -89,7 +89,7 @@ Comment: Disable minStolenSize less or equal fStolenMemorySize assertion, 10.14_
 ### 2018-10-13
 
 - 更新clover版本到4700，移除一些不必要efi
-- 使用AppleBacklightFixup.kext（基于Lilu）替代AppleBacklightInjector.kext(优点：可以去除亮度补丁，Recovery中工作，来自)
+- 使用AppleBacklightFixup.kext（基于Lilu）替代AppleBacklightInjector.kext(优点：可以去除亮度补丁，Recovery中工作，来自[hieplpvip](https://github.com/hieplpvip/AppleBacklightFixup)和[RehabMan](https://bitbucket.org/RehabMan/applebacklightfixup))
 - ALC256 Layout-id从Device Properties注入（WhateverGreen支持）
 - USBPower.kext更名为USBPorts.kext
 - 使用4K主题Mojave4k,喜欢原来主题kuke的可以在config的theme修改即可
