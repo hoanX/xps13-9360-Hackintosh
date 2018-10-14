@@ -31,11 +31,17 @@
 >    sudo kextcache -i /
 >  ```
 
-## 安装注意事项（非常重要，否则可能无法进入桌面）：
+#### BIOS推荐设置
 
----------------------
+- Sata: AHCI
+- Disable Secure Boot
+- Enable VT
+- Disable VT-D
+- Disable SD card reader (可选，关闭节省0.5w功耗)
 
-### 由于主板默认dvmt显存32M，所以FHD屏幕修改至少64M，QHD至少96M
+---------
+
+#### 安装注意事项（非常重要，否则可能无法进入桌面）：由于主板默认dvmt显存32M，所以FHD屏幕修改至少64M，QHD至少96M
 
 #### 修改方法：
 
@@ -159,4 +165,8 @@ Comment: Disable minStolenSize less or equal fStolenMemorySize assertion, 10.14_
 - clover界面多了很多无用的启动项，不知道为什么无法屏蔽！！！
 
 ## Credit
-[the-darkvoid](https://github.com/the-darkvoid/XPS9360-macOS)
+- [the-darkvoid](https://github.com/the-darkvoid/XPS9360-macOS)
+
+- [RehabMan](https://bitbucket.org/RehabMan/)
+
+- [Lilu](https://github.com/acidanthera/Lilu) And [Lilu plugins](https://github.com/acidanthera/Lilu/blob/master/KnownPlugins.md)
