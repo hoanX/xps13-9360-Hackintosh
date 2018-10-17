@@ -29,6 +29,10 @@
 >    sudo kextcache -i /
 >  ```
 
+#### QQ交流群
+
+![](https://ws3.sinaimg.cn/large/006tNbRwgy1fwbaohr4h5j308e08e0sn.jpg)
+
 #### 已知问题
 
 - sd读卡器无法使用(BIOS可以关闭，节省电量)
