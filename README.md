@@ -29,7 +29,7 @@
 >    sudo kextcache -i /
 >  ```
 
-#### QQ交流群
+#### QQ交流群 <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=78311340c78879c6875cd29fe0557e865a8a40807d0dd29a1d2cc0acac6137a4"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="问问题前请阅读文档" title="问问题前请阅读文档"></a>
 
 ![](https://ws3.sinaimg.cn/large/006tNbRwgy1fwbaohr4h5j308e08e0sn.jpg)
 
