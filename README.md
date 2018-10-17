@@ -15,13 +15,11 @@
 
 ![](https://ws1.sinaimg.cn/large/006tNc79gy1fvplhgdy48j312s0pu49x.jpg)
 
-> - 已知问题：sd读卡器无法使用(BIOS可以关闭，节省电量)
 > - 安装好后，耳机无法使用的使用ALCPlugFix文件(来自:[daliansky黑果小兵](https://github.com/daliansky/dell7000)）
 > - 如果感觉网卡无线频段不够的可以在config中的Boot参数Arguments中添加`brcmfx-country=#a`,重启即可
 > - 如果QHD分辨率设备，在开机第二阶段苹果logo变大，在config的Boot Graphics的UIScale中填入`2`，重启即可
 > - 关于蓝牙问题，将蓝牙目录下BrcmFirmwareData.kext和BrcmPatchRAM2.kext驱动放入clover对应驱动目录即可，BT4LEContiunityFixup.kext是修复Handoff功能，我没有需求，没有添加，自行测试
-> - Displays/RXN49_LQ133Z1_01.icm的文件是QHD的屏幕校色文件（来自：[grawlinson](https://github.com/grawlinson/dell-xps-9360/tree/master/display)），复制到`/Users/<username>/Library/ColorSync/Profiles`或者`/Library/ColorSync/Profiles`下，然后显示器偏好设置的颜色选择，如下
-> - ![](https://ws4.sinaimg.cn/large/006tNc79gy1fvpldr63nvj317c0y0dri.jpg)
+> - Displays/RXN49_LQ133Z1_01.icm的文件是QHD的屏幕校色文件（来自：[grawlinson](https://github.com/grawlinson/dell-xps-9360/tree/master/display)），复制到`/Users/<username>/Library/ColorSync/Profiles`或者`/Library/ColorSync/Profiles`下，然后显示器偏好设置的颜色选择，如下![](https://ws4.sinaimg.cn/large/006tNc79gy1fvpldr63nvj317c0y0dri.jpg)
 > - （低频已不可用，效果不大，懒的制作新版本）~~kexts/cpu低频 文件夹可以使cpu多档变频以及低频支持（最低500）~~
 >   - ~~以下二选一~~
 >   - 1. ~~X86PlatformPluginInjector.kext安装到系统的L/E或者S/L/E文件夹下，重建缓存并重启（或者直接使用tools的工具，直接拖进去），目前添加i5-7200u,i7-7500u以及i7-7560u支持~~
@@ -30,6 +28,15 @@
 >    重建缓存命令：
 >    sudo kextcache -i /
 >  ```
+
+#### 已知问题
+
+- sd读卡器无法使用(BIOS可以关闭，节省电量)
+- 雷电口需要开启前或者睡眠唤醒前插上，冷启动才会生效（生效后热插拔正常）
+- 耳机麦克风不工作（电脑麦克风正常，插耳机时使用电脑麦克风）
+- 睡眠前耳机没有拔下，唤醒后耳机可能无声，重新插拔下即可
+- 蓝牙长时间睡眠后唤醒可能不工作，可能需要重新睡眠唤醒或者重启
+- ~~Intel Iris Plus Graphics 640睡眠唤醒后有几率黑屏~~
 
 #### BIOS推荐设置
 
