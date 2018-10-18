@@ -9,7 +9,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>USBPower</string>
+	<string>USBPorts</string>
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>
@@ -34,7 +34,7 @@
 			<dict>
 				<key>port-count</key>
 				<data>
-				FQAAAA==
+				DgAAAA==
 				</data>
 				<key>ports</key>
 				<dict>
