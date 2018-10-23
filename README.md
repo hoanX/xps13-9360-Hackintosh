@@ -103,6 +103,15 @@ Comment: Disable minStolenSize less or equal fStolenMemorySize assertion, 10.14_
 
 -----------------
 
+### 2018-10-23
+
+- 显卡声卡ID注入移动到dsdt中
+- 显卡ID适合8代U，建议SMBIOS改为mbp14,1
+- 更新Clover Configurator 到5.2.1.0
+- 更新usb power属性注入
+- 更新usbports.kext
+- 添加原始hotpath文件，基于the-darkvoid修改
+
 ### 2018-10-13
 
 - 更新clover版本到4700，移除一些不必要efi
