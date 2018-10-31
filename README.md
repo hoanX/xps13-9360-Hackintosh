@@ -2,7 +2,7 @@
 | 类别         | 详细信息                                                     |
 | ------------ | ------------------------------------------------------------ |
 | 电脑型号     | DELL XPS 13-9360                                             |
-| 当前系统版本 | macOS Mojave 10.14(18A391)                                   |
+| 当前系统版本 | macOS Mojave 10.14.1(18B75)                                  |
 | BIOS         | 2.6.2 (之后的版本有bug内存频率变成1867 MHz)                  |
 | 处理器       | Intel Core i7-7560U                                          |
 | 内存         | 16 GB(DDR3L 2133 MHz)                                        |
@@ -13,7 +13,7 @@
 | 网卡         | 更换为 DW1830 （原网卡Killer 1535，也可以更换为DW1560,否则无法驱动网卡，蓝牙也有些问题) |
 
 
-![](https://ws1.sinaimg.cn/large/006tNc79gy1fvplhgdy48j312s0pu49x.jpg)
+![](https://ws4.sinaimg.cn/large/006tNbRwgy1fwr5xty9xqj312s0pudr2.jpg)
 
 > - 安装好后，耳机无法使用的使用ALCPlugFix文件(来自:[daliansky黑果小兵](https://github.com/daliansky/dell7000)）
 > - 如果感觉网卡无线频段不够的可以在config中的Boot参数Arguments中添加`brcmfx-country=#a`,重启即可
