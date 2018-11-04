@@ -8,11 +8,11 @@ DefinitionBlock ("", "SSDT", 2, "hack", "UIAC", 0x00000000)
 			"8086_9d2f", 
 			Package ()
 			{
-				"port-count", 
-				Buffer ()
-				{
-					0x07, 0x00, 0x00, 0x00
-				}, 
+//				"port-count", 
+//				Buffer ()
+//				{
+//					0x07, 0x00, 0x00, 0x00
+//				}, 
 
 				"ports", 
 				Package ()
@@ -76,6 +76,30 @@ DefinitionBlock ("", "SSDT", 2, "hack", "UIAC", 0x00000000)
 							0x05, 0x00, 0x00, 0x00
 						}
 					}, 
+
+                     "SS01", 
+					Package ()
+					{
+						"UsbConnector", 
+						0x03, 
+						"port", 
+						Buffer ()
+						{
+							0x0d, 0x00, 0x00, 0x00
+						}
+					}, 
+
+					"SS02", 
+					Package ()
+					{
+						"UsbConnector", 
+						0x03, 
+						"port", 
+						Buffer ()
+						{
+							0x0e, 0x00, 0x00, 0x00
+						}
+					},
 
                     "SSP1", 
 					Package ()
