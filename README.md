@@ -25,6 +25,12 @@
 >   - ~~以下二选一~~
 >   - 1. ~~X86PlatformPluginInjector.kext安装到系统的L/E或者S/L/E文件夹下，重建缓存并重启（或者直接使用tools的工具，直接拖进去），目前添加i5-7200u,i7-7500u以及i7-7560u支持~~
 >   - 2. ~~CPUFriend.kext和CPUFriendDataProvider.kext放到clover/kexts/other，重启即可（这个和上面那个效果一样，唯一区别就是这个可以不放到系统中，针对强迫症）~~
+> - 关于USB驱动方式
+>   - 目前有2种驱动方式RM的usbinjectall+uiac和基于fbPatcher.app生成的USBPort，目前没看出来哪个方式更好，我更加倾向于第二张
+>   - 第一种使用RM的usbinjectall方式，将kext/USB/usbinjectall的SSDT-UIAC.aml放到CLOVER⁩/ACPI⁩/⁨patched⁩下，USBInjectAll.kext放到CLOVER⁩/kexts/Other下，并删除USBPorts.kext,重启
+>   - 第二张方式，目前默认的方式，有个弊端，就是修改smbios后导致所有sub失效，需要修改USBPorts.kext,我默认添加了一个kext/USB/usbport/mbp14,1/USBPorts.kext,这个支持smbios为mbp14,1，替换原来的就好了，如果想更改其他smbios，教程如下：
+>     - 右键USBPorts.kext显示包内容![](https://ws4.sinaimg.cn/large/006tNbRwgy1fwwyo696aqj30ge076tdf.jpg)
+>     - 随便一个文本工具打开Contents的Info.plist，修改以下几个信息即可![](https://ws1.sinaimg.cn/large/006tNbRwgy1fwwyr7ld6ij30zm0gen1y.jpg)
 >  ```
 >    重建缓存命令：
 >    sudo kextcache -i /
@@ -103,6 +109,10 @@ Comment: Disable minStolenSize less or equal fStolenMemorySize assertion, 10.14_
 ```
 
 -----------------
+
+### 2018-11-05
+
+- 更新USBPorts.kext解决无法识别一些3.0设备以及3.0设备识别后速度是480Mb/s而不是5Gb/s
 
 ### 2018-10-23
 
