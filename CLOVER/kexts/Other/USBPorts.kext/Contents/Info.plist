@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
+	<key>CFBundleGetInfoString</key>
+	<string>1.0 Copyright © 2018 Headsoft. All rights reserved.</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.Headsoft.USBPorts</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -23,9 +25,9 @@
 		<key>MacBookPro13,1-XHC</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
-			<string>com.apple.driver.AppleUSBMergeNub</string>
+			<string>com.apple.driver.AppleUSBHostMergeProperties</string>
 			<key>IOClass</key>
-			<string>AppleUSBMergeNub</string>
+			<string>AppleUSBHostMergeProperties</string>
 			<key>IONameMatch</key>
 			<string>XHC</string>
 			<key>IOProviderClass</key>
@@ -34,7 +36,7 @@
 			<dict>
 				<key>port-count</key>
 				<data>
-				BQAAAA==
+				DgAAAA==
 				</data>
 				<key>ports</key>
 				<dict>
@@ -68,7 +70,7 @@
 					<key>HS04</key>
 					<dict>
 						<key>UsbConnector</key>
-						<integer>3</integer>
+						<integer>255</integer>
 						<key>port</key>
 						<data>
 						BAAAAA==
@@ -77,12 +79,53 @@
 					<key>HS05</key>
 					<dict>
 						<key>UsbConnector</key>
-						<integer>3</integer>
+						<integer>255</integer>
 						<key>port</key>
 						<data>
 						BQAAAA==
 						</data>
 					</dict>
+					<key>SS01</key>
+					<dict>
+						<key>UsbConnector</key>
+						<integer>3</integer>
+						<key>port</key>
+						<data>
+						DQAAAA==
+						</data>
+					</dict>
+					<key>SS02</key>
+					<dict>
+						<key>UsbConnector</key>
+						<integer>3</integer>
+						<key>port</key>
+						<data>
+						DgAAAA==
+						</data>
+					</dict>
+				</dict>
+			</dict>
+			<key>model</key>
+			<string>MacBookPro13,1</string>
+		</dict>
+		<key>MacBookPro13,1-XHC2</key>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.apple.driver.AppleUSBHostMergeProperties</string>
+			<key>IOClass</key>
+			<string>AppleUSBHostMergeProperties</string>
+			<key>IONameMatch</key>
+			<string>XHC2</string>
+			<key>IOProviderClass</key>
+			<string>AppleUSBXHCIPCI</string>
+			<key>IOProviderMergeProperties</key>
+			<dict>
+				<key>port-count</key>
+				<data>
+				AwAAAA==
+				</data>
+				<key>ports</key>
+				<dict>
 					<key>SSP1</key>
 					<dict>
 						<key>UsbConnector</key>
