@@ -19,6 +19,7 @@
 >   - 第一种：ALCPlugFix文件(来自:[daliansky黑果小兵](https://github.com/daliansky/dell7000)），双击ALCPlugFix/install.command即可，但是插上耳机无法使用耳麦，使用的电脑内置mic
 >   - 第二种(推荐)：ComboJack(来自：[ohmygod1993](http://bbs.pcbeta.com/viewthread-1799183-1-1.html))，修改xps9560上的驱动
 >     - 前提，使用过ALCPlugFix方式，先卸载，双击ALCPlugFix/uninstall.command即可，并删除CLOVER⁩ ▸ ⁨kexts⁩ ▸ ⁨Other⁩下的CodecCommander.kext驱动
+>     - ⁨将kexts⁩ ▸ ⁨ComboJack_Installer⁩下的VerbStub.kext放到CLOVER⁩ ▸ ⁨kexts⁩ ▸ ⁨Other⁩下
 >     - 终端下执行⁨kexts⁩ ▸ ⁨ComboJack_Installer⁩下的install.sh重启即可
 >     - 插入耳机选择Headset,这样耳机和耳麦都正常工作 ![](./kexts/ComboJack_Installer/Screen Shot 2017-07-05 at 10.59.08.png)
 > - 如果感觉网卡无线频段不够的可以在config中的Boot参数Arguments中添加`brcmfx-country=#a`,重启即可
@@ -50,7 +51,7 @@
 - sd读卡器无法使用(BIOS可以关闭，节省电量)
 - 雷电口需要开启前或者睡眠唤醒前插上，冷启动才会生效（生效后热插拔正常）
 - ~~耳机麦克风不工作（电脑麦克风正常，插耳机时使用电脑麦克风）~~
-- 睡眠前耳机没有拔下，唤醒后耳机可能无声，重新插拔下即可
+- ~~睡眠前耳机没有拔下，唤醒后耳机可能无声，重新插拔下即可~~(ComboJack可能也把这个修复了)
 - 蓝牙长时间睡眠后唤醒可能不工作，可能需要重新睡眠唤醒或者重启
 - ~~Intel Iris Plus Graphics 640睡眠唤醒后有几率黑屏~~
 
