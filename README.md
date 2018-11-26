@@ -9,13 +9,18 @@
 | 硬盘         | SAMSUNG PM961 (512GB)                                        |
 | 显卡         | Intel Iris Plus Graphics 640                                 |
 | 显示器       | QHD(Sharp触屏 3200x1800)                                     |
-| 声卡         | ALC256 (ALC3246) (layout id:56 by [daliansky黑果小兵](https://github.com/daliansky)) |
+| 声卡         | ALC256 (ALC3246)                                             |
 | 网卡         | 更换为 DW1830 （原网卡Killer 1535，也可以更换为DW1560,否则无法驱动网卡，蓝牙也有些问题) |
 
 
 ![](https://ws4.sinaimg.cn/large/006tNbRwgy1fwr5xty9xqj312s0pudr2.jpg)
 
-> - 安装好后，耳机无法使用的使用ALCPlugFix文件(来自:[daliansky黑果小兵](https://github.com/daliansky/dell7000)）
+> - 安装好后：耳机无法使用的问题，有2种解决方式
+>   - 第一种：ALCPlugFix文件(来自:[daliansky黑果小兵](https://github.com/daliansky/dell7000)），双击ALCPlugFix/install.command即可，但是插上耳机无法使用耳麦，使用的电脑内置mic
+>   - 第二种(推荐)：ComboJack(来自：[ohmygod1993](http://bbs.pcbeta.com/viewthread-1799183-1-1.html))，修改xps9560上的驱动
+>     - 前提，使用过ALCPlugFix方式，先卸载，双击ALCPlugFix/uninstall.command即可，并删除CLOVER⁩ ▸ ⁨kexts⁩ ▸ ⁨Other⁩下的CodecCommander.kext驱动
+>     - 终端下执行⁨kexts⁩ ▸ ⁨ComboJack_Installer⁩下的install.sh重启即可
+>     - 插入耳机选择Headset,这样耳机和耳麦都正常工作 ![](./kexts/ComboJack_Installer/Screen Shot 2017-07-05 at 10.59.08.png)
 > - 如果感觉网卡无线频段不够的可以在config中的Boot参数Arguments中添加`brcmfx-country=#a`,重启即可
 > - 如果QHD分辨率设备，在开机第二阶段苹果logo变大，在config的Boot Graphics的UIScale中填入`2`，重启即可
 > - 关于蓝牙问题，将蓝牙目录下BrcmFirmwareData.kext和BrcmPatchRAM2.kext驱动放入clover对应驱动目录即可，BT4LEContiunityFixup.kext是修复Handoff功能，我没有需求，没有添加，自行测试
@@ -109,6 +114,11 @@ Comment: Disable minStolenSize less or equal fStolenMemorySize assertion, 10.14_
 ```
 
 -----------------
+
+### 2018-11-26
+
+- 更新Clover到最新
+- 添加ComboJack解决耳麦无法使用问题，最上方有使用教程
 
 ### 2018-11-05
 
