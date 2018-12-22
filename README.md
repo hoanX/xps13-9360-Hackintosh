@@ -2,8 +2,8 @@
 | 类别         | 详细信息                                                     |
 | ------------ | ------------------------------------------------------------ |
 | 电脑型号     | DELL XPS 13-9360                                             |
-| 当前系统版本 | macOS Mojave 10.14.1(18B75)                                  |
-| BIOS         | 2.6.2 (之后的版本有bug内存频率变成1867 MHz)                  |
+| 当前系统版本 | macOS Mojave 10.14.2(18C54)                                  |
+| BIOS         | 2.10.0 (2.6.2之后的版本有bug内存频率变成1867 MHz,但是不影响安装) |
 | 处理器       | Intel Core i7-7560U                                          |
 | 内存         | 16 GB(DDR3L 2133 MHz)                                        |
 | 硬盘         | SAMSUNG PM961 (512GB)                                        |
@@ -13,7 +13,7 @@
 | 网卡         | 更换为 DW1830 （原网卡Killer 1535，也可以更换为DW1560,否则无法驱动网卡，蓝牙也有些问题) |
 
 
-![](https://ws4.sinaimg.cn/large/006tNbRwgy1fwr5xty9xqj312s0pudr2.jpg)
+![](https://ws2.sinaimg.cn/large/006tNbRwly1fyfj3eo8m6j312s0pudr2.jpg)
 
 > - 安装好后：耳机无法使用的问题，有2种解决方式
 >   - 第一种：ALCPlugFix文件(来自:[daliansky黑果小兵](https://github.com/daliansky/dell7000)），双击ALCPlugFix/install.command即可，但是插上耳机无法使用耳麦，使用的电脑内置mic
@@ -21,7 +21,7 @@
 >     - 前提，使用过ALCPlugFix方式，先卸载，双击ALCPlugFix/uninstall.command即可，并删除CLOVER⁩ ▸ ⁨kexts⁩ ▸ ⁨Other⁩下的CodecCommander.kext驱动
 >     - ⁨将kexts⁩ ▸ ⁨ComboJack_Installer⁩下的VerbStub.kext放到CLOVER⁩ ▸ ⁨kexts⁩ ▸ ⁨Other⁩下
 >     - 终端下执行⁨kexts⁩ ▸ ⁨ComboJack_Installer⁩下的install.sh重启即可
->     - 插入耳机选择Headset,这样耳机和耳麦都正常工作 ![](https://ws3.sinaimg.cn/large/006tNbRwgy1fxlwcdd92kj30g407ingv.jpg)
+>     - 插入耳机选择Headset,这样耳机和耳麦都正常工作 ![](https://ws4.sinaimg.cn/large/006tNbRwly1fyfj31ul8tj30uc0ewwii.jpg)
 > - 如果感觉网卡无线频段不够的可以在config中的Boot参数Arguments中添加`brcmfx-country=#a`,重启即可
 > - 如果QHD分辨率设备，在开机第二阶段苹果logo变大，在config的Boot Graphics的UIScale中填入`2`，重启即可
 > - 关于蓝牙问题，将蓝牙目录下BrcmFirmwareData.kext和BrcmPatchRAM2.kext驱动放入clover对应驱动目录即可，BT4LEContiunityFixup.kext是修复Handoff功能，我没有需求，没有添加，自行测试
@@ -32,9 +32,9 @@
 >   - 1. ~~X86PlatformPluginInjector.kext安装到系统的L/E或者S/L/E文件夹下，重建缓存并重启（或者直接使用tools的工具，直接拖进去），目前添加i5-7200u,i7-7500u以及i7-7560u支持~~
 >   - 2. ~~CPUFriend.kext和CPUFriendDataProvider.kext放到clover/kexts/other，重启即可（这个和上面那个效果一样，唯一区别就是这个可以不放到系统中，针对强迫症）~~
 > - 关于USB驱动方式
->   - 目前有2种驱动方式RM的usbinjectall+uiac和基于fbPatcher.app生成的USBPort，目前没看出来哪个方式更好，我更加倾向于第二张
+>   - 目前有2种驱动方式RM的usbinjectall+uiac和基于fbPatcher.app生成的USBPort，目前没看出来哪个方式更好，我更加倾向于第一种
 >   - 第一种使用RM的usbinjectall方式，将kext/USB/usbinjectall的SSDT-UIAC.aml放到CLOVER⁩/ACPI⁩/⁨patched⁩下，USBInjectAll.kext放到CLOVER⁩/kexts/Other下，并删除USBPorts.kext,重启
->   - 第二张方式，目前默认的方式，有个弊端，就是修改smbios后导致所有sub失效，需要修改USBPorts.kext,我默认添加了一个kext/USB/usbport/mbp14,1/USBPorts.kext,这个支持smbios为mbp14,1，替换原来的就好了，如果想更改其他smbios，教程如下：
+>   - 第二种方式，目前默认的方式，有个弊端，就是修改smbios后导致所有sub失效，需要修改USBPorts.kext,我默认添加了一个kext/USB/usbport/mbp14,1/USBPorts.kext,这个支持smbios为mbp14,1，替换原来的就好了，如果想更改其他smbios，教程如下：
 >     - 右键USBPorts.kext显示包内容![](https://ws4.sinaimg.cn/large/006tNbRwgy1fwwyo696aqj30ge076tdf.jpg)
 >     - 随便一个文本工具打开Contents的Info.plist，修改以下几个信息即可![](https://ws1.sinaimg.cn/large/006tNbRwgy1fwwyr7ld6ij30zm0gen1y.jpg)
 >  ```
@@ -53,7 +53,7 @@
 - ~~耳机麦克风不工作（电脑麦克风正常，插耳机时使用电脑麦克风）~~
 - ~~睡眠前耳机没有拔下，唤醒后耳机可能无声，重新插拔下即可~~(ComboJack可能也把这个修复了)
 - 蓝牙长时间睡眠后唤醒可能不工作，可能需要重新睡眠唤醒或者重启
-- ~~Intel Iris Plus Graphics 640睡眠唤醒后有几率黑屏~~
+- ~~Intel Iris Plus Graphics 640睡眠唤醒后有几率黑屏~~，WhateverGreen的framebuffer-flags补丁fixed
 
 #### BIOS推荐设置
 
@@ -115,6 +115,14 @@ Comment: Disable minStolenSize less or equal fStolenMemorySize assertion, 10.14_
 ```
 
 -----------------
+
+### 2018-12-22
+
+- 使用最新版本WhateverGreen的framebuffer-flags补丁解决iris 640有时唤醒黑屏，不再使用仿冒，smbios还原为mbp14,1
+- 更新ComboJack到最新，汉化选择耳麦提示，同时移除ALC256.aml，ComboJack不再需要
+- 删除AppleBacklightFixup驱动，已经被WhateverGreen取代
+- 更新Clover到最新4813
+- 更新常规驱动到最新
 
 ### 2018-11-26
 
