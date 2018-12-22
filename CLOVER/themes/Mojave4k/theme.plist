@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Badruzeus</string>
 	<key>Description</key>
-	<string>Mojave Clover theme for 4K Display @3840x2160. Version: 1.1</string>
+	<string>Mojave Clover theme for 4K Display @3840x2160. Version: 1.8</string>
 	<key>Theme</key>
 	<dict>
 		<key>Background</key>
@@ -28,12 +28,14 @@
 			<key>Swap</key>
 			<true/>
 		</dict>
+		<key>Banner</key>
+		<string>logo.png</string>
 		<key>BootCampStyle</key>
 		<false/>
 		<key>Components</key>
 		<dict>
 			<key>Banner</key>
-			<false/>
+			<true/>
 			<key>Functions</key>
 			<true/>
 			<key>Help</key>
@@ -52,7 +54,7 @@
 			<key>CharWidth</key>
 			<integer>26</integer>
 			<key>Path</key>
-			<string>Font_CPMono_40pt_White.png</string>
+			<string>Font_DroidSans_36pt_White.png</string>
 			<key>Proportional</key>
 			<false/>
 			<key>Type</key>
@@ -99,7 +101,7 @@
 		</dict>
 	</dict>
 	<key>Version</key>
-	<string>1.1</string>
+	<string>1.8</string>
 	<key>Year</key>
 	<string>2018</string>
 </dict>

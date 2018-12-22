@@ -17,8 +17,12 @@ DefinitionBlock ("", "SSDT", 2, "hack", "EC-USBX", 0x00000000)
 			{
 				"kUSBSleepPortCurrentLimit", 
 				3000, 
+				"kUSBSleepPowerSupply", 
+				2600, 
 				"kUSBWakePortCurrentLimit", 
-				3000
+				3000, 
+				"kUSBWakePowerSupply", 
+				3200
 			})
 		}
 	}

@@ -361,11 +361,11 @@ DefinitionBlock("", "SSDT", 2, "hack", "_IGPU", 0)
             // Kaby Lake/HD640
             0x5926, 0, Package()
             {
-                //Fake HD540
-                "AAPL,ig-platform-id", Buffer() { 0x00, 0x00, 0x26, 0x19 },
+                "AAPL,ig-platform-id", Buffer() { 0x02, 0x00, 0x26, 0x59 },
                 "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel Iris Plus Graphics 640" },
-                "device-id", Buffer() { 0x26, 0x19, 0x00, 0x00 },
+                "framebuffer-patch-enable", Buffer() { 0x01, 0x00, 0x00, 0x00 },
+                "framebuffer-flags", Buffer() { 0x0B, 0x0B, 0xE3, 0x00 },
             },
             // Kaby Lake/HD650
             0x5927, 0, Package()

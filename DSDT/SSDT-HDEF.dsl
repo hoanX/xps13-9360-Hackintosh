@@ -21,7 +21,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "HDEF", 0)
         If (!Arg2) { Return (Buffer() { 0x03 } ) }
         Local0 = Package()
         {
-            "layout-id", Buffer(4) { 0x38, 0, 0, 0 },
+            "layout-id", Buffer(4) { 0x0d, 0, 0, 0 },
             "built-in", Buffer() { 0x00 },
             "hda-gfx", Buffer() { "onboard-1" },
             "RM,device-id", Buffer(4) { 0x70, 0x9d, 0x00, 0x00 },
