@@ -44,11 +44,11 @@
 >    	
 >    修改睡眠模式（更好的进入睡眠）：
 >    	sudo pmset -a hibernatemode 0
-> 	sudo pmset -a autopoweroff 0
-> 	sudo pmset -a standby 0
-> 	sudo rm /private/var/vm/sleepimage
-> 	sudo touch /private/var/vm/sleepimage
-> 	sudo chflags uchg /private/var/vm/sleepimage
+> 		sudo pmset -a autopoweroff 0
+> 		sudo pmset -a standby 0
+> 		sudo rm /private/var/vm/sleepimage
+> 		sudo touch /private/var/vm/sleepimage
+> 		sudo chflags uchg /private/var/vm/sleepimage
 >  ```
 
 #### QQ交流群 <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=78311340c78879c6875cd29fe0557e865a8a40807d0dd29a1d2cc0acac6137a4"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="问问题前请阅读文档" title="问问题前请阅读文档"></a>
