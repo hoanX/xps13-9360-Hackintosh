@@ -22,7 +22,9 @@
 >     - ⁨将kexts⁩ ▸ ⁨ComboJack_Installer⁩下的VerbStub.kext放到CLOVER⁩ ▸ ⁨kexts⁩ ▸ ⁨Other⁩下
 >     - 终端下执行⁨kexts⁩ ▸ ⁨ComboJack_Installer⁩下的install.sh重启即可
 >     - 插入耳机选择Headset,这样耳机和耳麦都正常工作 ![](https://ws4.sinaimg.cn/large/006tNbRwly1fyfj31ul8tj30uc0ewwii.jpg)
-> - 如果感觉网卡无线频段不够的可以在config中的Boot参数Arguments中添加`brcmfx-country=#a`,重启即可
+> - 网卡
+>   - 无线频段不够的可以在config中的Boot参数Arguments中添加`brcmfx-country=#a`,重启即可
+>   - 最新版本的AirportBrcmFixup在DW1830下显示网卡为第三方，使用没有影响，可以使用1.1.6版本还原
 > - 如果QHD分辨率设备，在开机第二阶段苹果logo变大，在config的Boot Graphics的UIScale中填入`2`，重启即可
 > - 关于蓝牙问题，将蓝牙目录下BrcmFirmwareData.kext和BrcmPatchRAM2.kext驱动放入clover对应驱动目录或者将BrcmFirmwareRepo.kext和BrcmPatchRAM2.kext放入到系统L/E目录下并重建缓存，官方解释说放到系统种内存效率更高，目前没看出来差别，BT4LEContiunityFixup.kext是修复Handoff功能，我没有需求，没有添加，自行测试
 > - 关于WIFI问题，如果WIFI无法驱动，添加WIFI目录下的驱动，DW1830不需要，DW1560可能需要
@@ -31,7 +33,6 @@
 >   - ~~以下二选一~~
 >   - 1. ~~X86PlatformPluginInjector.kext安装到系统的L/E或者S/L/E文件夹下，重建缓存并重启（或者直接使用tools的工具，直接拖进去），目前添加i5-7200u,i7-7500u以及i7-7560u支持~~
 >   - 2. ~~CPUFriend.kext和CPUFriendDataProvider.kext放到clover/kexts/other，重启即可（这个和上面那个效果一样，唯一区别就是这个可以不放到系统中，针对强迫症）~~
-> - 8代U亮度无法调节的，在config中的Boot参数Arguments中添加`igfxcflbklt=opcode`
 > - 关于USB驱动方式
 >   - 目前有2种驱动方式RM的usbinjectall+uiac和基于fbPatcher.app生成的USBPort，目前没看出来哪个方式更好，我更加倾向于第一种
 >   - 第一种也是默认方式使用RM的usbinjectall方式，将kext/USB/usbinjectall的SSDT-UIAC.aml放到CLOVER⁩/ACPI⁩/⁨patched⁩下，USBInjectAll.kext放到CLOVER⁩/kexts/Other下，并删除USBPorts.kext,重启
