@@ -1,17 +1,15 @@
 // Automatic injection of IGPU properties
 
-#ifndef NO_DEFINITIONBLOCK
 DefinitionBlock("", "SSDT", 2, "hack", "_IGPU", 0)
 {
-#endif
+    External(_SB.PCI0.IGPU, DeviceObj)
+    External(_SB.PCI0.IGPU.XDSM, MethodObj)
+
     External(RMCF.TYPE, IntObj)
     External(RMCF.HIGH, IntObj)
     External(RMCF.IGPI, IntObj)
     External(RMGO, PkgObj)
-    External(RMDA, IntObj)
-    External(RMCF.DAUD, IntObj)
 
-    External(_SB.PCI0.IGPU, DeviceObj)
     Scope(_SB.PCI0.IGPU)
     {
         // need the device-id from PCI_config to inject correct properties
@@ -21,8 +19,7 @@ DefinitionBlock("", "SSDT", 2, "hack", "_IGPU", 0)
             GDID,16,
         }
 
-        // Note: all injection packages MUST have ig-platform-id as the first entry (for IGPI override)
-        // Note: all injection packages MUST have hda-gfx as second entry (for DAUD/RMDA feature)
+        // Note: all injection packages must have ig-platform-id as the first entry (for IGPI override)
 
         // Injection tables for laptops
         Name(LAPL, Package() // low resolution
@@ -31,39 +28,39 @@ DefinitionBlock("", "SSDT", 2, "hack", "_IGPU", 0)
             0x0116, 0x0126, 0, Package()
             {
                 "AAPL,snb-platform-id", Buffer() { 0x00, 0x00, 0x01, 0x00 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 3000" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "AAPL,os-info", Buffer() { 0x30, 0x49, 0x01, 0x11, 0x11, 0x11, 0x08, 0x00, 0x00, 0x01, 0xf0, 0x1f, 0x01, 0x00, 0x00, 0x00, 0x10, 0x07, 0x00, 0x00 },
             },
             // Ivy Bridge/HD4000
             0x0166, 0x0162, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x03, 0x00, 0x66, 0x01 },   //768p
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 4000" },
+                "hda-gfx", Buffer() { "onboard-1" },
             },
             // Haswell/HD4200
             0x0a1e, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x06, 0x00, 0x26, 0x0a },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 4200" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "device-id", Buffer() { 0x12, 0x04, 0x00, 0x00 },
             },
             // Haswell/HD4400
             0x0a16, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x06, 0x00, 0x26, 0x0a },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 4400" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "device-id", Buffer() { 0x12, 0x04, 0x00, 0x00 },
             },
             // Haswell/HD4600
             0x0416, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x06, 0x00, 0x26, 0x0a },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 4600" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "device-id", Buffer() { 0x12, 0x04, 0x00, 0x00 },
             },
         })
@@ -73,40 +70,40 @@ DefinitionBlock("", "SSDT", 2, "hack", "_IGPU", 0)
             0x0116, 0x0126, 0, Package()
             {
                 "AAPL,snb-platform-id", Buffer() { 0x00, 0x00, 0x01, 0x00 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "AAPL00,DualLink", Buffer() { 0x01, 0, 0, 0, },
                 "model", Buffer() { "Intel HD Graphics 3000" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "AAPL,os-info", Buffer() { 0x30, 0x49, 0x01, 0x11, 0x11, 0x11, 0x08, 0x00, 0x00, 0x01, 0xf0, 0x1f, 0x01, 0x00, 0x00, 0x00, 0x10, 0x07, 0x00, 0x00 },
             },
             // Ivy Bridge/HD4000
             0x0166, 0x0162, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x04, 0x00, 0x66, 0x01 }, //900p+
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 4000" },
+                "hda-gfx", Buffer() { "onboard-1" },
             },
             // Haswell/HD4200
             0x0a1e, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x08, 0x00, 0x2e, 0x0a }, //UHD/QHD+
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 4200" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "device-id", Buffer() { 0x12, 0x04, 0x00, 0x00 },
             },
             // Haswell/HD4400
             0x0a16, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x08, 0x00, 0x2e, 0x0a }, //UHD/QHD+
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 4400" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "device-id", Buffer() { 0x12, 0x04, 0x00, 0x00 },
             },
             // Haswell/HD4600
             0x0416, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x08, 0x00, 0x2e, 0x0a }, //UHD/QHD+
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 4600" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "device-id", Buffer() { 0x12, 0x04, 0x00, 0x00 },
             },
             // Haswell/HD5000/HD5100/HD5200
@@ -122,22 +119,22 @@ DefinitionBlock("", "SSDT", 2, "hack", "_IGPU", 0)
             0x161e, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x00, 0x00, 0x1e, 0x16 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 5300" },
+                "hda-gfx", Buffer() { "onboard-1" },
             },
             // Broadwell/HD5500
             0x1616, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x04, 0x00, 0x26, 0x16 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 5500" },
+                "hda-gfx", Buffer() { "onboard-1" },
             },
             // Broadwell/HD5600
             0x1612, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x04, 0x00, 0x26, 0x16 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 5600" },
+                "hda-gfx", Buffer() { "onboard-1" },
             },
             // Broadwell/HD6000/HD6100/HD6200
             0x1626, 0x162b, 0x1622, 0, Package()
@@ -153,8 +150,8 @@ DefinitionBlock("", "SSDT", 2, "hack", "_IGPU", 0)
             0x0116, 0x0126, 0, Package()
             {
                 "AAPL,snb-platform-id", Buffer() { 0x10, 0x00, 0x03, 0x00 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 3000" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 //"AAPL,os-info", Buffer() { 0x30, 0x49, 0x01, 0x11, 0x11, 0x11, 0x08, 0x00, 0x00, 0x01, 0xf0, 0x1f, 0x01, 0x00, 0x00, 0x00, 0x10, 0x07, 0x00, 0x00 },
                 "AAPL00,DualLink", Buffer() { 0x01, 0, 0, 0, },
             },
@@ -162,9 +159,9 @@ DefinitionBlock("", "SSDT", 2, "hack", "_IGPU", 0)
             0x0112, 0x0122, 0, Package()
             {
                 "AAPL,snb-platform-id", Buffer() { 0x10, 0x00, 0x03, 0x00 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "AAPL00,DualLink", Buffer() { 0x01, 0, 0, 0, },
                 "model", Buffer() { "Intel HD Graphics 3000" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "device-id", Buffer() { 0x26, 0x01, 0x00, 0x00 },
                 //"AAPL,os-info", Buffer() { 0x30, 0x49, 0x01, 0x11, 0x11, 0x11, 0x08, 0x00, 0x00, 0x01, 0xf0, 0x1f, 0x01, 0x00, 0x00, 0x00, 0x10, 0x07, 0x00, 0x00 },
             },
@@ -172,39 +169,39 @@ DefinitionBlock("", "SSDT", 2, "hack", "_IGPU", 0)
             0x0166, 0x0162, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x0a, 0x00, 0x66, 0x01 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 4000" },
+                "hda-gfx", Buffer() { "onboard-1" },
             },
             // Haswell/HD4200
             0x0a1e, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() {  0x03, 0x00, 0x22, 0x0d },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 4200" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "device-id", Buffer() { 0x12, 0x04, 0x00, 0x00 },
             },
             // Haswell/HD4400
             0x0a16, 0x041e, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() {  0x03, 0x00, 0x22, 0x0d },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 4400" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "device-id", Buffer() { 0x12, 0x04, 0x00, 0x00 },
             },
             // Haswell/HD4600 (mobile)
             0x0416, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() {  0x03, 0x00, 0x22, 0x0d },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 4600" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "device-id", Buffer() { 0x12, 0x04, 0x00, 0x00 },
             },
             // Haswell/HD4600 (desktop)
             0x0412, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() {  0x03, 0x00, 0x22, 0x0d },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 4600" },
+                "hda-gfx", Buffer() { "onboard-1" },
             },
             // Haswell/HD5000/HD5100/HD5200
             0x0a26, 0x0a2e, 0x0d22, 0x0d26, 0, Package()
@@ -216,22 +213,22 @@ DefinitionBlock("", "SSDT", 2, "hack", "_IGPU", 0)
             0x161e, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x00, 0x00, 0x1e, 0x16 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 5300" },
+                "hda-gfx", Buffer() { "onboard-1" },
             },
             // Broadwell/HD5500
             0x1616, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x02, 0x00, 0x16, 0x16 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 5500" },
+                "hda-gfx", Buffer() { "onboard-1" },
             },
             // Broadwell/HD5600
             0x1612, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x02, 0x00, 0x16, 0x16 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 5600" },
+                "hda-gfx", Buffer() { "onboard-1" },
             },
             // Broadwell/HD6000/HD6100
             0x1626, 0x162b, 0, Package()
@@ -249,95 +246,95 @@ DefinitionBlock("", "SSDT", 2, "hack", "_IGPU", 0)
             0x1902, 0x1906, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x00, 0x00, 0x1e, 0x19 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 510" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "device-id", Buffer() { 0x02, 0x19, 0x00, 0x00 },
                 "RM,device-id", Buffer() { 0x02, 0x19, 0x00, 0x00 },
-                //"AAPL,GfxYTile", Buffer() { 1, 0, 0, 0 },
+                "AAPL,GfxYTile", Buffer() { 1, 0, 0, 0 },
             },
             // Skylake/HD515
             0x191e, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x00, 0x00, 0x1e, 0x19 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 515" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "RM,device-id", Buffer() { 0x1e, 0x19, 0x00, 0x00 },
-                //"AAPL,GfxYTile", Buffer() { 1, 0, 0, 0 },
+                "AAPL,GfxYTile", Buffer() { 1, 0, 0, 0 },
             },
             // Skylake/HD520
             0x1916, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x02, 0x00, 0x16, 0x19 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 520" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "RM,device-id", Buffer() { 0x16, 0x19, 0x00, 0x00 },
-                //"AAPL,GfxYTile", Buffer() { 1, 0, 0, 0 },
+                "AAPL,GfxYTile", Buffer() { 1, 0, 0, 0 },
             },
             // Skylake/HD530
             0x1912, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x02, 0x00, 0x16, 0x19 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 530" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "RM,device-id", Buffer() { 0x12, 0x19, 0x00, 0x00 },
-                //"AAPL,GfxYTile", Buffer() { 1, 0, 0, 0 },
+                "AAPL,GfxYTile", Buffer() { 1, 0, 0, 0 },
             },
             // Skylake/HD530 mobile?
             0x191b, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x00, 0x00, 0x1b, 0x19 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 530" },
                 "device-id", Buffer() { 0x1b, 0x19, 0x00, 0x00 },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "RM,device-id", Buffer() { 0x1b, 0x19, 0x00, 0x00 },
-                //"AAPL,GfxYTile", Buffer() { 1, 0, 0, 0 },
+                "AAPL,GfxYTile", Buffer() { 1, 0, 0, 0 },
             },
             // Skylake/HD540
             0x1926, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x02, 0x00, 0x26, 0x19 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel Iris Graphics 540" },
-                //"RM,device-id", Buffer() { 0x26, 0x19, 0x00, 0x00 },
+                "hda-gfx", Buffer() { "onboard-1" },
+                "RM,device-id", Buffer() { 0x26, 0x19, 0x00, 0x00 },
             },
             // Skylake/HD550
             0x1927, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x02, 0x00, 0x26, 0x19 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel Iris Graphics 550" },
                 //REVIEW: using 0x1926 because 0x1927 is not supported on 10.11.x
                 "device-id", Buffer() { 0x26, 0x19, 0x00, 0x00 },
-                //"RM,device-id", Buffer() { 0x26, 0x19, 0x00, 0x00 },
+                "hda-gfx", Buffer() { "onboard-1" },
+                "RM,device-id", Buffer() { 0x26, 0x19, 0x00, 0x00 },
             },
             // Skylake/Iris Pro HD580
             0x193b, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x05, 0x00, 0x3b, 0x19 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel Iris Pro Graphics 580" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "RM,device-id", Buffer() { 0x3b, 0x19, 0x00, 0x00 },
             },
             // Kaby Lake/HD615
             0x591e, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x00, 0x00, 0x1e, 0x59 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 615" },
+                "hda-gfx", Buffer() { "onboard-1" },
             },
             // Kaby Lake/HD620
             0x5916, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x00, 0x00, 0x16, 0x59 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 620" },
+                "hda-gfx", Buffer() { "onboard-1" },
             },
             // Kaby Lake-R/UHD620
             0x5917, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x00, 0x00, 0x16, 0x59 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel UHD Graphics 620" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "device-id", Buffer() { 0x16, 0x59, 0x00, 0x00 },
                 // WhateverGreen.kext framebuffer patch instructions    
                 "framebuffer-patch-enable", Buffer() { 0x01, 0x00, 0x00, 0x00 },
@@ -348,22 +345,22 @@ DefinitionBlock("", "SSDT", 2, "hack", "_IGPU", 0)
             0x5912, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x00, 0x00, 0x12, 0x59 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 630" },
+                "hda-gfx", Buffer() { "onboard-1" },
             },
             // KabyLake/HD630 mobile?
             0x591b, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x00, 0x00, 0x1b, 0x59 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel HD Graphics 630" },
+                "hda-gfx", Buffer() { "onboard-1" },
             },
             // Kaby Lake/HD640
             0x5926, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x02, 0x00, 0x26, 0x59 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel Iris Plus Graphics 640" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "framebuffer-patch-enable", Buffer() { 0x01, 0x00, 0x00, 0x00 },
                 "framebuffer-flags", Buffer() { 0x0B, 0x0B, 0xE3, 0x00 },
             },
@@ -371,23 +368,23 @@ DefinitionBlock("", "SSDT", 2, "hack", "_IGPU", 0)
             0x5927, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x02, 0x00, 0x26, 0x59 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel Iris Plus Graphics 650" },
+                "hda-gfx", Buffer() { "onboard-1" },
             },
             // CoffeeLake/UHD620
             0x3e91, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x00, 0x00, 0x12, 0x59 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel UHD Graphics 620" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "device-id", Buffer() { 0x12, 0x59, 0x00, 0x00 },
             },
             // CoffeeLake/UHD630
             0x3e92, 0, Package()
             {
                 "AAPL,ig-platform-id", Buffer() { 0x00, 0x00, 0x12, 0x59 },
-                "hda-gfx", Buffer() { "onboard-1" },
                 "model", Buffer() { "Intel UHD Graphics 630" },
+                "hda-gfx", Buffer() { "onboard-1" },
                 "device-id", Buffer() { 0x12, 0x59, 0x00, 0x00 },
             },
         })
@@ -395,6 +392,9 @@ DefinitionBlock("", "SSDT", 2, "hack", "_IGPU", 0)
         // inject properties for integrated graphics on IGPU
         Method(_DSM, 4)
         {
+            // Pass call to original _DSM first
+            \_SB.PCI0.IGPU.XDSM(Arg0, Arg1, Arg2, Arg3)
+
             // IGPU can be set to Ones to disable IGPU property injection (same as removing SSDT-IGPU.aml)
             If (CondRefOf(\RMCF.IGPI)) { If (Ones == \RMCF.IGPI) { Return(0) } }
             // otherwise, normal IGPU injection...
@@ -447,21 +447,12 @@ DefinitionBlock("", "SSDT", 2, "hack", "_IGPU", 0)
             {
                 if (0 != \RMCF.IGPI)
                 {
-                    // assumes that ig-platform-id value is always at index 1
                     CreateDWordField(DerefOf(Local0[1]), 0, IGPI)
                     IGPI = \RMCF.IGPI
                 }
             }
-            // the user can disable "hda-gfx" injection by defining \RMDA or setting RMCF.DAUD=0
-            // assumes that "hda-gfx" is always at index 2 (eg. "hda-gfx" follows ig-platform-id)
-            Local1 = 0
-            If (CondRefOf(\RMDA)) { Local1 = 1 }
-            If (CondRefOf(\RMCF.DAUD)) { If (0 == \RMCF.DAUD) { Local1 = 1 } }
-            If (Local1) { Local0[2] = "#hda-gfx"; }
             Return (Local0)
         }
     }
-#ifndef NO_DEFINITIONBLOCK
 }
-#endif
 //EOF

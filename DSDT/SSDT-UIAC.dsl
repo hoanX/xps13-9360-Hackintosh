@@ -39,7 +39,7 @@ DefinitionBlock ("", "SSDT", 2, "hack", "UIAC", 0x00000000)
 					Package ()
 					{
 						"UsbConnector", 
-						0x03, 
+						0xFF, 
 						"port", 
 						Buffer ()
 						{
