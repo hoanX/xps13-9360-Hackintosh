@@ -2,7 +2,7 @@
 | 类别         | 详细信息                                                     |
 | ------------ | ------------------------------------------------------------ |
 | 电脑型号     | DELL XPS 13-9360                                             |
-| 当前系统版本 | macOS Mojave 10.14.2(18C54)                                  |
+| 当前系统版本 | macOS Mojave 10.14.4(18E226)                                 |
 | BIOS         | 2.10.0 (2.6.2之后的版本有bug内存频率变成1867 MHz,但是不影响安装) |
 | 处理器       | Intel Core i7-7560U                                          |
 | 内存         | 16 GB(DDR3L 2133 MHz)                                        |
@@ -13,7 +13,7 @@
 | 网卡         | 更换为 DW1830 （原网卡Killer 1535，也可以更换为DW1560,否则无法驱动网卡，蓝牙也有些问题) |
 
 
-![](https://ws2.sinaimg.cn/large/006tNbRwly1fyfj3eo8m6j312s0pudr2.jpg)
+![](https://ws3.sinaimg.cn/large/006tKfTcly1g1fzn4uraaj312s0pu144.jpg)
 
 > - 安装好后：耳机无法使用的问题，有2种解决方式
 >   - 第一种：ALCPlugFix文件(来自:[daliansky黑果小兵](https://github.com/daliansky/dell7000)），双击ALCPlugFix/install.command即可，但是插上耳机无法使用耳麦，使用的电脑内置mic
@@ -111,20 +111,17 @@
 
 --------
 
-**方式二**：WhateverGreen貌似不支持10.14~~使用WhateverGreen修复DVMT-Prealloc 32MB,（已添加到配置文件中，正常可以生效，不需要修改BIOS的dvmt，我没有测试过，自行测试）~~
+**方式二**：~~WhateverGreen貌似不支持10.14使用WhateverGreen修复DVMT-Prealloc 32MB,（已添加到配置文件中，正常可以生效，不需要修改BIOS的dvmt，我没有测试过，自行测试）~~
 
-DVMT补丁在KextsToPatch中，默认添加，但是未开启，有需要自行打开
-
-10.14（18A391）：
-
-```html
-Kext: com.apple.driver.AppleIntelSKLGraphicsFramebuffer
-Find: 764048FF 05FDEE07
-Repl: EB4048FF 05FDEE07
-Comment: Disable minStolenSize less or equal fStolenMemorySize assertion, 10.14_18A391 (based on Austere.J patch by Ricky)
-```
+~~DVMT补丁在KextsToPatch中，默认添加，但是未开启，有需要自行打开~~
 
 -----------------
+
+### 2019-03-26
+
+- 同步the-darkvoid配置
+- 更新Clover到r4895
+- 更新kext驱动
 
 ### 2018-12-22
 

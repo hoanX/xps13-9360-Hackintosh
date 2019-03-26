@@ -12,29 +12,6 @@
 		<string>0xB2</string>
 		<key>#ResetValue</key>
 		<string>0x73</string>
-		<key>#SortedOrder</key>
-		<array>
-			<string>SSDT-XOSI.aml</string>
-			<string>SSDT-Config.aml</string>
-			<string>SSDT-IGPU.aml</string>
-			<string>SSDT-PNLF.aml</string>
-			<string>SSDT-BRT6.aml</string>
-			<string>SSDT-ALS0.aml</string>
-			<string>SSDT-HDEF.aml</string>
-			<string>SSDT-ALC256.aml</string>
-			<string>SSDT-UIAC.aml</string>
-			<string>SSDT-USBX.aml</string>
-			<string>SSDT-PTSWAK.aml</string>
-			<string>SSDT-PRW.aml</string>
-			<string>SSDT-NVME.aml</string>
-			<string>SSDT-DMAC.aml</string>
-			<string>SSDT-MCHC.aml</string>
-			<string>SSDT-MEM2.aml</string>
-			<string>SSDT-PMCR.aml</string>
-			<string>SSDT-I2C.aml</string>
-			<string>SSDT-TYPC.aml</string>
-			<string>SSDT-YTBT.aml</string>
-		</array>
 		<key>AutoMerge</key>
 		<false/>
 		<key>DSDT</key>
@@ -52,7 +29,7 @@
 			<array>
 				<dict>
 					<key>Comment</key>
-					<string>change _DSM to XDSM</string>
+					<string>change _DSM to XDSM (GFX0/IGPU)</string>
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
@@ -62,6 +39,70 @@
 					<key>Replace</key>
 					<data>
 					WERTTQ==
+					</data>
+					<key>TgtBridge</key>
+					<data>
+					R0ZYMA==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change GFX0 to IGPU, optionally pair with SSDT-IGPU.aml</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					R0ZYMA==
+					</data>
+					<key>Replace</key>
+					<data>
+					SUdQVQ==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change _DSM to XDSM (HDAS/HDEF)</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					X0RTTQ==
+					</data>
+					<key>Replace</key>
+					<data>
+					WERTTQ==
+					</data>
+					<key>TgtBridge</key>
+					<data>
+					SERBUw==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change HDAS to HDEF, optionally pair with SSDT-HDEF.aml</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					SERBUw==
+					</data>
+					<key>Replace</key>
+					<data>
+					SERFRg==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change _DSM to XDSM (LPCB)</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					TFBDQhQbX0RTTQw=
+					</data>
+					<key>Replace</key>
+					<data>
+					TFBDQhQbWERTTQw=
 					</data>
 				</dict>
 				<dict>
@@ -104,34 +145,6 @@
 					<key>Replace</key>
 					<data>
 					FCBCUlRYAg==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change GFX0 to IGPU, optionally pair with SSDT-IGPU.aml</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					R0ZYMA==
-					</data>
-					<key>Replace</key>
-					<data>
-					SUdQVQ==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change HDAS to HDEF, optionally pair with SSDT-HDEF.aml</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					SERBUw==
-					</data>
-					<key>Replace</key>
-					<data>
-					SERFRg==
 					</data>
 				</dict>
 				<dict>
@@ -220,25 +233,21 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change _STA to XSTA in Device GPI0</string>
+					<string>change _STA to XSTA in device GPI0 (TouchPad I2C)</string>
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
 					<data>
-					X1NUQQ==
+					FB1fU1RBAKAJk1M=
 					</data>
 					<key>Replace</key>
 					<data>
-					WFNUQQ==
-					</data>
-					<key>TgtBridge</key>
-					<data>
-					R1BJMA==
+					FB1YU1RBAKAJk1M=
 					</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change _CRS to XCRS in Device TPD1</string>
+					<string>change _CRS to XCRS in device TPD1 (TouchPad I2C)</string>
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
@@ -248,6 +257,24 @@
 					<key>Replace</key>
 					<data>
 					WENSUw==
+					</data>
+					<key>TgtBridge</key>
+					<data>
+					VFBEMQ==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change _DSM to XDSM (TPD1/Touchpad I2C)</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					X0RTTQ==
+					</data>
+					<key>Replace</key>
+					<data>
+					WERTTQ==
 					</data>
 					<key>TgtBridge</key>
 					<data>
@@ -274,9 +301,9 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>Rename XTBT to YTBT and use with SSDT-YTBT.aml for USB-C hot plug</string>
+					<string>(Old) Rename XTBT to YTBT and use with SSDT-YTBT.aml for USB-C hot plug</string>
 					<key>Disabled</key>
-					<true/>
+					<false/>
 					<key>Find</key>
 					<data>
 					pABYVEJU
@@ -296,17 +323,22 @@
 				<key>Signature</key>
 				<string>SSDT</string>
 				<key>TableId</key>
-				<string>xh_rvp07</string>
+				<string>TbtTypeC</string>
 			</dict>
 			<dict>
 				<key>Signature</key>
 				<string>SSDT</string>
 				<key>TableId</key>
-				<string>PtidDevc</string>
+				<string>xh_rvp07</string>
 			</dict>
 		</array>
 		<key>FixHeaders</key>
 		<true/>
+		<key>RenameDevices</key>
+		<dict>
+			<key>_SB.PCI0.RP05.PXSX</key>
+			<string>ARPT</string>
+		</dict>
 		<key>SSDT</key>
 		<dict>
 			<key>DropOem</key>
@@ -325,6 +357,33 @@
 				<true/>
 			</dict>
 		</dict>
+		<key>SortedOrder</key>
+		<array>
+			<string>SSDT-Debug.aml</string>
+			<string>SSDT-XOSI.aml</string>
+			<string>SSDT-Config.aml</string>
+			<string>SSDT-IGPU.aml</string>
+			<string>SSDT-PNLF.aml</string>
+			<string>SSDT-BRT6.aml</string>
+			<string>SSDT-ALS0.aml</string>
+			<string>SSDT-HDEF.aml</string>
+			<string>SSDT-UIAC.aml</string>
+			<string>SSDT-USBX.aml</string>
+			<string>SSDT-PTSWAK.aml</string>
+			<string>SSDT-PRW.aml</string>
+			<string>#SSDT-NVME.aml</string>
+			<string>SSDT-DMAC.aml</string>
+			<string>SSDT-MCHC.aml</string>
+			<string>SSDT-MEM2.aml</string>
+			<string>SSDT-PMCR.aml</string>
+			<string>SSDT-TYPC.aml</string>
+			<string>SSDT-YTBT.aml</string>
+			<string>SSDT-I2C.aml</string>
+			<string>SSDT-LPC.aml</string>
+			<string>SSDT-SMCD.aml</string>
+			<string>SSDT-BATT.aml</string>
+			<string>SSDT-USBC.aml</string>
+		</array>
 	</dict>
 	<key>Boot</key>
 	<dict>
@@ -373,13 +432,13 @@
 		<key>USB</key>
 		<dict>
 			<key>AddClockID</key>
-			<true/>
+			<false/>
 			<key>FixOwnership</key>
 			<true/>
 			<key>HighCurrent</key>
 			<false/>
 			<key>Inject</key>
-			<true/>
+			<false/>
 		</dict>
 	</dict>
 	<key>GUI</key>
@@ -454,7 +513,7 @@
 		<key>KernelLapic</key>
 		<false/>
 		<key>KernelPm</key>
-		<true/>
+		<false/>
 		<key>KernelToPatch</key>
 		<array>
 			<dict>
@@ -474,29 +533,6 @@
 		</array>
 		<key>KernelXCPM</key>
 		<false/>
-		<key>KextsToPatch</key>
-		<array>
-			<dict>
-				<key>Comment</key>
-				<string>Disable minStolenSize less or equal fStolenMemorySize assertion, 10.14_18A391 (based on Austere.J patch by Ricky)</string>
-				<key>Disabled</key>
-				<true/>
-				<key>Find</key>
-				<data>
-				dkBI/wX97gc=
-				</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>MatchOS</key>
-				<string>10.14.x</string>
-				<key>Name</key>
-				<string>com.apple.driver.AppleIntelSKLGraphicsFramebuffer</string>
-				<key>Replace</key>
-				<data>
-				60BI/wX97gc=
-				</data>
-			</dict>
-		</array>
 	</dict>
 	<key>RtVariables</key>
 	<dict>
@@ -522,7 +558,7 @@ C07539200LCFYRFA5</string>
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>C02727310GUHWVPAD</string>
+		<string>C02741902CDHWVPCB</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
@@ -552,9 +588,9 @@ C07539200LCFYRFA5</string>
 		<key>ProductName</key>
 		<string>MacBookPro14,1</string>
 		<key>SerialNumber</key>
-		<string>C02V16ZTHV29</string>
+		<string>C02VJ073HV29</string>
 		<key>SmUUID</key>
-		<string>06788FA9-89DA-427E-8044-66BDA242094F</string>
+		<string>A6FF0EAE-B96A-4D9F-9281-063C5AC31852</string>
 		<key>Trust</key>
 		<true/>
 		<key>Version</key>
