@@ -3,7 +3,7 @@
 | ------------ | ------------------------------------------------------------ |
 | 电脑型号     | DELL XPS 13-9360                                             |
 | 当前系统版本 | macOS Mojave 10.14.5(18F132) & 10.15(Beta 3)                 |
-| BIOS         | 2.12.0 (2.6.2之后的版本内存频率变成1867 MHz,但是不影响安装,查询官网应该是cpu不支持，后面的BIOS可能更正了，[链接](https://ark.intel.com/content/www/us/en/ark/products/97540/intel-core-i7-7560u-processor-4m-cache-up-to-3-80-ghz.html)) |
+| BIOS         | 2.12.0 (2.6.2之后的版本有bug内存频率变成1867 MHz,但是不影响安装) |
 | 处理器       | Intel Core i7-7560U                                          |
 | 内存         | 16 GB(DDR3L 2133 MHz)                                        |
 | 硬盘         | SAMSUNG PM961 (512GB)                                        |
