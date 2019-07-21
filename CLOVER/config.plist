@@ -29,84 +29,6 @@
 			<array>
 				<dict>
 					<key>Comment</key>
-					<string>change _DSM to XDSM (GFX0/IGPU)</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					X0RTTQ==
-					</data>
-					<key>Replace</key>
-					<data>
-					WERTTQ==
-					</data>
-					<key>TgtBridge</key>
-					<data>
-					R0ZYMA==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change GFX0 to IGPU, optionally pair with SSDT-IGPU.aml</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					R0ZYMA==
-					</data>
-					<key>Replace</key>
-					<data>
-					SUdQVQ==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change _DSM to XDSM (HDAS/HDEF)</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					X0RTTQ==
-					</data>
-					<key>Replace</key>
-					<data>
-					WERTTQ==
-					</data>
-					<key>TgtBridge</key>
-					<data>
-					SERBUw==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change HDAS to HDEF, optionally pair with SSDT-HDEF.aml</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					SERBUw==
-					</data>
-					<key>Replace</key>
-					<data>
-					SERFRg==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change _DSM to XDSM (LPCB)</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					TFBDQhQbX0RTTQw=
-					</data>
-					<key>Replace</key>
-					<data>
-					TFBDQhQbWERTTQw=
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
 					<string>change OSID to XSID (to avoid match against _OSI XOSI patch)</string>
 					<key>Disabled</key>
 					<false/>
@@ -165,7 +87,7 @@
 					<key>Comment</key>
 					<string>change SAT0 to SATA, optionally pair with SSDT-SATA.aml</string>
 					<key>Disabled</key>
-					<false/>
+					<true/>
 					<key>Find</key>
 					<data>
 					U0FUMA==
@@ -317,21 +239,8 @@
 			<key>ReuseFFFF</key>
 			<false/>
 		</dict>
-		<key>DropTables</key>
-		<array>
-			<dict>
-				<key>Signature</key>
-				<string>SSDT</string>
-				<key>TableId</key>
-				<string>TbtTypeC</string>
-			</dict>
-			<dict>
-				<key>Signature</key>
-				<string>SSDT</string>
-				<key>TableId</key>
-				<string>xh_rvp07</string>
-			</dict>
-		</array>
+		<key>DisableASPM</key>
+		<false/>
 		<key>FixHeaders</key>
 		<true/>
 		<key>RenameDevices</key>
@@ -359,36 +268,24 @@
 		</dict>
 		<key>SortedOrder</key>
 		<array>
-			<string>SSDT-Debug.aml</string>
 			<string>SSDT-XOSI.aml</string>
 			<string>SSDT-Config.aml</string>
-			<string>SSDT-IGPU.aml</string>
 			<string>SSDT-PNLF.aml</string>
 			<string>SSDT-BRT6.aml</string>
-			<string>SSDT-ALS0.aml</string>
-			<string>SSDT-HDEF.aml</string>
 			<string>SSDT-UIAC.aml</string>
 			<string>SSDT-USBX.aml</string>
 			<string>SSDT-PTSWAK.aml</string>
 			<string>SSDT-PRW.aml</string>
-			<string>#SSDT-NVME.aml</string>
-			<string>SSDT-DMAC.aml</string>
-			<string>SSDT-MCHC.aml</string>
-			<string>SSDT-MEM2.aml</string>
-			<string>SSDT-PMCR.aml</string>
 			<string>SSDT-TYPC.aml</string>
 			<string>SSDT-YTBT.aml</string>
 			<string>SSDT-I2C.aml</string>
-			<string>SSDT-LPC.aml</string>
 			<string>SSDT-SMCD.aml</string>
-			<string>SSDT-BATT.aml</string>
-			<string>SSDT-USBC.aml</string>
 		</array>
 	</dict>
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>-v darkwake=0</string>
+		<string>darkwake=0 -v</string>
 		<key>DefaultVolume</key>
 		<string>LastBootedVolume</string>
 		<key>HibernationFixup</key>
@@ -420,14 +317,46 @@
 	</dict>
 	<key>Devices</key>
 	<dict>
-		<key>AddProperties</key>
-		<array/>
 		<key>Audio</key>
 		<dict>
 			<key>AFGLowPowerState</key>
 			<false/>
 			<key>ResetHDA</key>
 			<false/>
+		</dict>
+		<key>Properties</key>
+		<dict>
+			<key>PciRoot(0x0)/Pci(0x1f,0x0)</key>
+			<dict>
+				<key>compatible</key>
+				<string>pci8086,9cc1</string>
+				<key>device-id</key>
+				<data>
+				wZwAAA==
+				</data>
+			</dict>
+			<key>PciRoot(0x0)/Pci(0x1f,0x3)</key>
+			<dict>
+				<key>layout-id</key>
+				<data>
+				DQAAAA==
+				</data>
+			</dict>
+			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
+			<dict>
+				<key>AAPL,ig-platform-id</key>
+				<data>
+				AgAmWQ==
+				</data>
+				<key>framebuffer-flags</key>
+				<data>
+				CwvjAA==
+				</data>
+				<key>framebuffer-patch-enable</key>
+				<data>
+				AQAAAA==
+				</data>
+			</dict>
 		</dict>
 		<key>USB</key>
 		<dict>
@@ -450,6 +379,8 @@
 			<string>Preboot</string>
 			<string>Recovery</string>
 		</array>
+		<key>Language</key>
+		<string>zh_CN:0</string>
 		<key>Mouse</key>
 		<dict>
 			<key>DoubleClick</key>
@@ -472,8 +403,6 @@
 			<key>Tool</key>
 			<true/>
 		</dict>
-		<key>ScreenResolution</key>
-		<string>3200x1800</string>
 		<key>ShowOptimus</key>
 		<false/>
 		<key>Theme</key>
@@ -514,23 +443,6 @@
 		<false/>
 		<key>KernelPm</key>
 		<false/>
-		<key>KernelToPatch</key>
-		<array>
-			<dict>
-				<key>Comment</key>
-				<string>MSR 0xE2 _xcpm_idle instant reboot(c) Pike R. Alpha</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				ILniAAAADzA=
-				</data>
-				<key>Replace</key>
-				<data>
-				ILniAAAAkJA=
-				</data>
-			</dict>
-		</array>
 		<key>KernelXCPM</key>
 		<false/>
 	</dict>
@@ -546,17 +458,17 @@
 	<key>SMBIOS</key>
 	<dict>
 		<key>BiosReleaseDate</key>
-		<string>09/17/2018</string>
+		<string>05/28/2019</string>
 		<key>BiosVendor</key>
 		<string>Apple Inc.</string>
 		<key>BiosVersion</key>
-		<string>MBP141.88Z.F000.B00.1809171524</string>
+		<string>MBP141.88Z.F000.B00.1905281616</string>
 		<key>Board-ID</key>
 		<string>Mac-B4831CEBD52A0C4C</string>
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>C02741902CDHWVPCB</string>
+		<string>C02706300J9HWVPUE</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
@@ -568,7 +480,7 @@
 		<key>ChassisType</key>
 		<string>0x09</string>
 		<key>EfiVersion</key>
-		<string>184.0.0.0.0</string>
+		<string>196.0.0.0.0</string>
 		<key>Family</key>
 		<string>MacBook Pro</string>
 		<key>FirmwareFeatures</key>
@@ -586,9 +498,9 @@
 		<key>ProductName</key>
 		<string>MacBookPro14,1</string>
 		<key>SerialNumber</key>
-		<string>C02VJ073HV29</string>
+		<string>C02T73ZFHV29</string>
 		<key>SmUUID</key>
-		<string>A6FF0EAE-B96A-4D9F-9281-063C5AC31852</string>
+		<string>A80337A4-2DBD-4F2F-8C62-06D04FFED6CB</string>
 		<key>Trust</key>
 		<true/>
 		<key>Version</key>

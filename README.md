@@ -2,8 +2,8 @@
 | 类别         | 详细信息                                                     |
 | ------------ | ------------------------------------------------------------ |
 | 电脑型号     | DELL XPS 13-9360                                             |
-| 当前系统版本 | macOS Mojave 10.14.4(18E226)                                 |
-| BIOS         | 2.10.0 (2.6.2之后的版本有bug内存频率变成1867 MHz,但是不影响安装) |
+| 当前系统版本 | macOS Mojave 10.14.5(18F132) & 10.15(Beta 3)                 |
+| BIOS         | 2.12.0 (2.6.2之后的版本有bug内存频率变成1867 MHz,但是不影响安装) |
 | 处理器       | Intel Core i7-7560U                                          |
 | 内存         | 16 GB(DDR3L 2133 MHz)                                        |
 | 硬盘         | SAMSUNG PM961 (512GB)                                        |
@@ -26,31 +26,29 @@
 >   - 无线频段不够的可以在config中的Boot参数Arguments中添加`brcmfx-country=#a`,重启即可
 >   - 最新版本的AirportBrcmFixup在DW1830下显示网卡为第三方，使用没有影响，可以使用1.1.6版本还原
 > - 如果QHD分辨率设备，在开机第二阶段苹果logo变大，在config的Boot Graphics的UIScale中填入`2`，重启即可
-> - 关于蓝牙问题，将蓝牙目录下BrcmFirmwareData.kext和BrcmPatchRAM2.kext驱动放入clover对应驱动目录或者将BrcmFirmwareRepo.kext和BrcmPatchRAM2.kext放入到系统L/E目录下并重建缓存，官方解释说放到系统种内存效率更高，目前没看出来差别，BT4LEContiunityFixup.kext是修复Handoff功能，我没有需求，没有添加，自行测试
+> - 关于蓝牙问题，将蓝牙目录下BrcmFirmwareData.kext和BrcmPatchRAM2.kext驱动放入clover对应驱动目录或者将BrcmFirmwareRepo.kext和BrcmPatchRAM2.kext放入到系统L/E目录下并重建缓存，官方解释说放到系统种内存效率更高，目前没看出来差别，BT4LEContiunityFixup.kext是修复Handoff功能，我没有需求，没有添加，自行测试,10.15使用10.15文件夹驱动
 > - 关于WIFI问题，如果WIFI无法驱动，添加WIFI目录下的驱动，DW1830不需要，DW1560可能需要
 > - Displays/RXN49_LQ133Z1_01.icm的文件是QHD的屏幕校色文件（来自：[grawlinson](https://github.com/grawlinson/dell-xps-9360/tree/master/display)），复制到`/Users/<username>/Library/ColorSync/Profiles`或者`/Library/ColorSync/Profiles`下，然后显示器偏好设置的颜色选择，如下![](https://ws4.sinaimg.cn/large/006tNc79gy1fvpldr63nvj317c0y0dri.jpg)
-> - （低频已不可用，效果不大，懒的制作新版本）~~kexts/cpu低频 文件夹可以使cpu多档变频以及低频支持（最低500）~~
->   - ~~以下二选一~~
->   - 1. ~~X86PlatformPluginInjector.kext安装到系统的L/E或者S/L/E文件夹下，重建缓存并重启（或者直接使用tools的工具，直接拖进去），目前添加i5-7200u,i7-7500u以及i7-7560u支持~~
->   - 2. ~~CPUFriend.kext和CPUFriendDataProvider.kext放到clover/kexts/other，重启即可（这个和上面那个效果一样，唯一区别就是这个可以不放到系统中，针对强迫症）~~
+> - 有低频需求的，建议使用`https://github.com/stevezhengshiqi/one-key-cpufriend`的脚本根据自己需求定制，有多种选择
+>   - 脚本：bash -c "$(curl -fsSL https://raw.githubusercontent.com/stevezhengshiqi/one-key-cpufriend/master/one-key-cpufriend_cn.sh)"
 > - 关于USB驱动方式
 >   - 目前有2种驱动方式RM的usbinjectall+uiac和基于fbPatcher.app生成的USBPort，目前没看出来哪个方式更好，我更加倾向于第一种
 >   - 第一种也是默认方式使用RM的usbinjectall方式，将kext/USB/usbinjectall的SSDT-UIAC.aml放到CLOVER⁩/ACPI⁩/⁨patched⁩下，USBInjectAll.kext放到CLOVER⁩/kexts/Other下，并删除USBPorts.kext,重启
 >   - 第二种方式，目前默认的方式，有个弊端，就是修改smbios后导致所有sub失效，需要修改USBPorts.kext,我默认添加了一个kext/USB/usbport/mbp14,1/USBPorts.kext,这个支持smbios为mbp14,1，替换原来的就好了，如果想更改其他smbios，教程如下：
 >     - 右键USBPorts.kext显示包内容![](https://ws4.sinaimg.cn/large/006tNbRwgy1fwwyo696aqj30ge076tdf.jpg)
 >     - 随便一个文本工具打开Contents的Info.plist，修改以下几个信息即可![](https://ws1.sinaimg.cn/large/006tNbRwgy1fwwyr7ld6ij30zm0gen1y.jpg)
->  ```
->    重建缓存命令：
->    	sudo kextcache -i /
+> ```
+> 重建缓存命令：
+>  	sudo kextcache -i /
 >    	
 >    修改睡眠模式（更好的进入睡眠）：
 >    	sudo pmset -a hibernatemode 0
-> 		sudo pmset -a autopoweroff 0
-> 		sudo pmset -a standby 0
+>    		sudo pmset -a autopoweroff 0
+>    		sudo pmset -a standby 0
 > 		sudo rm /private/var/vm/sleepimage
 > 		sudo touch /private/var/vm/sleepimage
 > 		sudo chflags uchg /private/var/vm/sleepimage
->  ```
+> ```
 
 #### QQ交流群 <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=78311340c78879c6875cd29fe0557e865a8a40807d0dd29a1d2cc0acac6137a4"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="问问题前请阅读文档" title="问问题前请阅读文档"></a>
 
@@ -59,10 +57,10 @@
 #### 已知问题
 
 - sd读卡器无法使用(BIOS可以关闭，节省电量)
-- 雷电口需要开启前或者睡眠唤醒前插上，冷启动才会生效（生效后热插拔正常）
+- ~~雷电口需要开启前或者睡眠唤醒前插上，冷启动才会生效（生效后热插拔正常）~~
 - ~~耳机麦克风不工作（电脑麦克风正常，插耳机时使用电脑麦克风）~~
 - ~~睡眠前耳机没有拔下，唤醒后耳机可能无声，重新插拔下即可~~(ComboJack可能也把这个修复了)
-- 蓝牙长时间睡眠后唤醒可能不工作，可能需要重新睡眠唤醒或者重启
+- ~~蓝牙长时间睡眠后唤醒可能不工作，可能需要重新睡眠唤醒或者重启~~（新版本usbports.kext蓝牙不内建，同时关闭蓝牙高级选项，大幅改善问题，出问题几率很小）
 - ~~Intel Iris Plus Graphics 640睡眠唤醒后有几率黑屏~~，WhateverGreen的framebuffer-flags补丁fixed
 
 #### BIOS推荐设置
@@ -116,6 +114,15 @@
 ~~DVMT补丁在KextsToPatch中，默认添加，但是未开启，有需要自行打开~~
 
 -----------------
+
+### 2019-07-21（可能是我最后一次更新）
+
+- 同步the-darkvoid配置，此次更新只支持iris 640核显，其他不再支持
+- 兼容10.15测试版本，蓝牙驱动使用10.15文件夹内的驱动
+- 更新smbios版的到最新
+- Clover更新r5018
+- 驱动更新到最新
+- usb使用usbports.kext,蓝牙不内建，同时建议关闭蓝牙的所有高级选项，蓝牙比较稳定，很少出现不可用问题
 
 ### 2019-03-26
 
