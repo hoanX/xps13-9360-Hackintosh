@@ -89,12 +89,14 @@
 				<integer>3200</integer>
 				<key>port-count</key>
 				<data>
-				BQAAAA==
+				DgAAAA==
 				</data>
 				<key>ports</key>
 				<dict>
 					<key>HS01</key>
 					<dict>
+						<key>DevSpeed</key>
+						<integer>2</integer>
 						<key>UsbConnector</key>
 						<integer>3</integer>
 						<key>port</key>
@@ -105,7 +107,7 @@
 					<key>HS02</key>
 					<dict>
 						<key>DevSpeed</key>
-						<integer>1</integer>
+						<integer>2</integer>
 						<key>UsbConnector</key>
 						<integer>3</integer>
 						<key>port</key>
@@ -118,7 +120,7 @@
 						<key>DevSpeed</key>
 						<integer>1</integer>
 						<key>UsbConnector</key>
-						<integer>3</integer>
+						<integer>0</integer>
 						<key>port</key>
 						<data>
 						AwAAAA==
@@ -142,6 +144,28 @@
 						<key>port</key>
 						<data>
 						BQAAAA==
+						</data>
+					</dict>
+					<key>SS01</key>
+					<dict>
+						<key>DevSpeed</key>
+						<integer>3</integer>
+						<key>UsbConnector</key>
+						<integer>3</integer>
+						<key>port</key>
+						<data>
+						DQAAAA==
+						</data>
+					</dict>
+					<key>SS02</key>
+					<dict>
+						<key>DevSpeed</key>
+						<integer>3</integer>
+						<key>UsbConnector</key>
+						<integer>3</integer>
+						<key>port</key>
+						<data>
+						DgAAAA==
 						</data>
 					</dict>
 				</dict>
