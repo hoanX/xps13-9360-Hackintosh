@@ -1,9 +1,9 @@
-## XPS 13-9360 Mojave
+# XPS 13-9360 Mojave
 | 类别                | 详细信息                                                     |
 | ------------------- | ------------------------------------------------------------ |
 | 电脑型号            | DELL XPS 13-9360                                             |
 | Clover:当前系统版本 | macOS Mojave 10.14.6(18G84) & 10.15(Beta 3)                  |
-| OC:当前系统版本     | macOS Catalina 10.15.4(19E287)                               |
+| OC:当前系统版本     | macOS Big Sur 11.0 Beta3(20A5323l)                           |
 | BIOS                | 2.12.0 (2.6.2之后的版本有bug内存频率变成1867 MHz,但是不影响安装) |
 | 处理器              | Intel Core i7-7560U/i7-8550U                                 |
 | 内存                | 16 GB(DDR3L 2133 MHz)                                        |
@@ -13,47 +13,89 @@
 | 声卡                | ALC256 (ALC3246)                                             |
 | 网卡                | 更换为 DW1830 （原网卡Killer 1535，也可以更换为DW1560,否则无法驱动网卡，蓝牙也有些问题) |
 
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1gh3esn9rnvj312s0pq4c1.jpg)
 
-![](https://ws3.sinaimg.cn/large/006tKfTcly1g1fzn4uraaj312s0pu144.jpg)
+## 系统安装后注意事项
 
-> - 安装好后：耳机无法使用的问题，有2种解决方式
->   - 第一种：ALCPlugFix文件(来自:[daliansky黑果小兵](https://github.com/daliansky/dell7000)），双击ALCPlugFix/install.command即可，但是插上耳机无法使用耳麦，使用的电脑内置mic
->   - 第二种(推荐)：ComboJack(来自：[ohmygod1993](http://bbs.pcbeta.com/viewthread-1799183-1-1.html),[hackintosh-stuff](https://github.com/hackintosh-stuff/ComboJack)，修改xps9560上的驱动
->     - 前提，使用过ALCPlugFix方式，先卸载，双击ALCPlugFix/uninstall.command即可，并删除CLOVER⁩ ▸ ⁨kexts⁩ ▸ ⁨Other⁩下的CodecCommander.kext驱动
->     - ⁨将kexts⁩ ▸ ⁨ComboJack_Installer⁩下的VerbStub.kext放到CLOVER⁩ ▸ ⁨kexts⁩ ▸ ⁨Other⁩下
->     - 终端下执行⁨kexts⁩ ▸ ⁨ComboJack_Installer⁩下的install.sh重启即可
->     - 插入耳机选择Headset,这样耳机和耳麦都正常工作 ![](https://ws4.sinaimg.cn/large/006tNbRwly1fyfj31ul8tj30uc0ewwii.jpg)
-> - 网卡
->   - 无线频段不够的可以在config中的Boot参数Arguments中添加`brcmfx-country=#a`,重启即可
->   - 最新版本的AirportBrcmFixup在DW1830下显示网卡为第三方，使用没有影响，可以使用1.1.6版本还原
-> - 如果QHD分辨率设备，在开机第二阶段苹果logo变大，在config的Boot Graphics的UIScale中填入`2`，重启即可
-> - 关于蓝牙问题，将蓝牙目录下BrcmFirmwareData.kext和BrcmPatchRAM2.kext驱动放入clover对应驱动目录或者将BrcmFirmwareRepo.kext和BrcmPatchRAM2.kext放入到系统L/E目录下并重建缓存，官方解释说放到系统种内存效率更高，目前没看出来差别，BT4LEContiunityFixup.kext是修复Handoff功能，我没有需求，没有添加，自行测试,10.15使用10.15文件夹驱动
-> - 关于WIFI问题，如果WIFI无法驱动，添加WIFI目录下的驱动，DW1830不需要，DW1560可能需要
-> - Displays/RXN49_LQ133Z1_01.icm的文件是QHD的屏幕校色文件（来自：[grawlinson](https://github.com/grawlinson/dell-xps-9360/tree/master/display)），复制到`/Users/<username>/Library/ColorSync/Profiles`或者`/Library/ColorSync/Profiles`下，然后显示器偏好设置的颜色选择，如下![](https://ws4.sinaimg.cn/large/006tNc79gy1fvpldr63nvj317c0y0dri.jpg)
-> - 有低频需求的，建议使用`https://github.com/stevezhengshiqi/one-key-cpufriend`的脚本根据自己需求定制，有多种选择
->   - 脚本：bash -c "$(curl -fsSL https://raw.githubusercontent.com/stevezhengshiqi/one-key-cpufriend/master/one-key-cpufriend_cn.sh)"
-> - 关于USB驱动方式
->   - 目前有2种驱动方式RM的usbinjectall+uiac和基于fbPatcher.app生成的USBPort，目前没看出来哪个方式更好，我更加倾向于第一种
->   - 第一种也是默认方式使用RM的usbinjectall方式，将kext/USB/usbinjectall的SSDT-UIAC.aml放到CLOVER⁩/ACPI⁩/⁨patched⁩下，USBInjectAll.kext放到CLOVER⁩/kexts/Other下，并删除USBPorts.kext,重启
->   - 第二种方式，目前默认的方式，有个弊端，就是修改smbios后导致所有sub失效，需要修改USBPorts.kext,我默认添加了一个kext/USB/usbport/mbp14,1/USBPorts.kext,这个支持smbios为mbp14,1，替换原来的就好了，如果想更改其他smbios，教程如下：
->     - 右键USBPorts.kext显示包内容![](https://ws4.sinaimg.cn/large/006tNbRwgy1fwwyo696aqj30ge076tdf.jpg)
->     - 随便一个文本工具打开Contents的Info.plist，修改以下几个信息即可![](https://ws1.sinaimg.cn/large/006tNbRwgy1fwwyr7ld6ij30zm0gen1y.jpg)
-> ```
-> 重建缓存命令：
->  	sudo kextcache -i /
->    	
->    修改睡眠模式（更好的进入睡眠）：
->    	sudo pmset -a hibernatemode 0
->    		sudo pmset -a autopoweroff 0
->    		sudo pmset -a standby 0
-> 		sudo rm /private/var/vm/sleepimage
-> 		sudo touch /private/var/vm/sleepimage
-> 		sudo chflags uchg /private/var/vm/sleepimage
-> ```
+### 耳机
 
-#### QQ交流群 <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=78311340c78879c6875cd29fe0557e865a8a40807d0dd29a1d2cc0acac6137a4"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="问问题前请阅读文档" title="问问题前请阅读文档"></a>
+第一种：ALCPlugFix文件(来自:[daliansky黑果小兵](https://github.com/daliansky/dell7000)），双击ALCPlugFix/install.command即可，但是插上耳机无法使用耳麦，使用的电脑内置mic
 
-![](https://ws3.sinaimg.cn/large/006tNbRwgy1fwbaohr4h5j308e08e0sn.jpg)
+
+
+第二种(推荐)：ComboJack(来自：[ohmygod1993](http://bbs.pcbeta.com/viewthread-1799183-1-1.html),[hackintosh-stuff](https://github.com/hackintosh-stuff/ComboJack)，修改xps9560上的驱动
+
+1. 前提，使用过ALCPlugFix方式，先卸载，双击ALCPlugFix/uninstall.command即可，并删除CLOVER⁩ ▸ ⁨kexts⁩ ▸ ⁨Other⁩下的CodecCommander.kext驱动
+
+2. 将kexts⁩ ▸ ⁨ComboJack_Installer⁩下的VerbStub.kext放到CLOVER⁩ ▸ ⁨kexts⁩ ▸ ⁨Other⁩下
+
+3. 终端下执行⁨kexts⁩ ▸ ⁨ComboJack_Installer⁩下的install.sh重启即可
+
+4. 插入耳机选择Headset,这样耳机和耳麦都正常工作 
+
+### 网卡
+
+1. 无线频段不够的可以在config中的Boot参数Arguments中添加`brcmfx-country=#a`,重启即可
+
+2. 最新版本的AirportBrcmFixup在DW1830下显示网卡为第三方，使用没有影响，可以使用1.1.6版本还原
+3. 苹果原装网卡需要添加AirportBrcmFixup驱动，否则睡眠有时候会被唤醒
+
+### 显示器
+
+如果QHD分辨率设备，在开机第二阶段苹果logo变大，在config的Boot Graphics的UIScale中填入`2`，重启即可
+
+校色文件：Displays/RXN49_LQ133Z1_01.icm的文件是QHD的屏幕校色文件（来自：[grawlinson](https://github.com/grawlinson/dell-xps-9360/tree/master/display)），复制到`/Users/<username>/Library/ColorSync/Profiles`或者`/Library/ColorSync/Profiles`下，然后显示器偏好设置的颜色选择
+
+### 蓝牙
+
+关于蓝牙问题，将蓝牙目录下BrcmFirmwareData.kext和BrcmPatchRAM2.kext驱动放入clover对应驱动目录或者将BrcmFirmwareRepo.kext和BrcmPatchRAM2.kext放入到系统L/E目录下并重建缓存，官方解释说放到系统种内存效率更高，目前没看出来差别，BT4LEContiunityFixup.kext是修复Handoff功能，我没有需求，没有添加，自行测试,10.15使用10.15文件夹驱动
+
+### WIFI
+
+关于WIFI问题，如果WIFI无法驱动，添加WIFI目录下的驱动，DW1830不需要，DW1560可能需要
+
+### CPU
+
+有低频需求的，建议使用`https://github.com/stevezhengshiqi/one-key-cpufriend`的脚本根据自己需求定制，有多种选择
+
+或者以下脚本
+
+```
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/stevezhengshiqi/one-key-cpufriend/master/one-key-cpufriend_cn.sh)"
+```
+
+### USB
+
+目前有2种驱动方式RM的usbinjectall+uiac和基于fbPatcher.app生成的USBPort，目前没看出来哪个方式更好，我更加倾向于第一种
+
+第一种也是默认方式使用RM的usbinjectall方式，将kext/USB/usbinjectall的SSDT-UIAC.aml放到CLOVER⁩/ACPI⁩/⁨patched⁩下，USBInjectAll.kext放到CLOVER⁩/kexts/Other下，并删除USBPorts.kext,重启
+
+第二种方式，目前默认的方式，有个弊端，就是修改smbios后导致所有sub失效，需要修改USBPorts.kext,我默认添加了一个kext/USB/usbport/mbp14,1/USBPorts.kext,这个支持smbios为mbp14,1，替换原来的就好了，如果想更改其他smbios，教程如下：
+
+1. 右键USBPorts.kext显示包内容
+
+2. 随便一个文本工具打开Contents的Info.plist，修改几个信息即可
+
+### 重建缓存
+
+```
+sudo kextcache -i /
+```
+
+### 睡眠模式（更好的睡眠）
+
+```
+sudo pmset -a hibernatemode 0
+sudo pmset -a autopoweroff 0
+sudo pmset -a standby 0
+sudo rm /private/var/vm/sleepimage
+sudo touch /private/var/vm/sleepimage
+sudo chflags uchg /private/var/vm/sleepimage
+```
+
+
+
+# QQ交流群 <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=78311340c78879c6875cd29fe0557e865a8a40807d0dd29a1d2cc0acac6137a4"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="问问题前请阅读文档" title="问问题前请阅读文档"></a>
 
 #### 已知问题
 
@@ -115,6 +157,12 @@
 ~~DVMT补丁在KextsToPatch中，默认添加，但是未开启，有需要自行打开~~
 
 -----------------
+
+### 2020-07-25 更新OpenCore支持macOS Big Sur（0.60测试版）
+
+- 支持macOS 11 Beta3安装（默认使用VirtualSMC.kext，如果失败尝试使用FakeSMC.kext）
+- macOS 10.15.6 也正常使用（boot-args删除vsmcgen=1，不删除影响不大）
+- Clover引导不再更新（自己更新版本和驱动即可），最新的5120版本新增OC Quick可参考OC的配置
 
 ### 2020-04-17 添加OpenCore（0.57正式版）支持
 
