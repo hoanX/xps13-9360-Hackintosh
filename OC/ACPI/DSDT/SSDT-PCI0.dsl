@@ -1,14 +1,5 @@
 // Add various missing devices in PCI0
-// Include EC, PMCR, DMAC, MCHC and SBUS MEM2
-// #(Disabled)Rename ECDV to EC to not brake battery statistics for laptop[2]
-// #(Disabled)Patch: Rename ECDV to EC
-// Find: RUNEVg==	
-// Replace: RUNfXw==
-// References:
-// [1] https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-SBUS-MCHC.dsl
-// [2] https://www.insanelymac.com/forum/topic/338516-opencore-discussion/?do=findComment&comment=2685513
-// [3] https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-EC.dsl
-// [4] https://github.com/acidanthera/OpenCorePkg/blob/master/Docs/AcpiSamples/SSDT-PMC.dsl
+// Include DMAC, MCHC and SBUS
 
 DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
 {
@@ -16,53 +7,8 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
     External (_SB_.PCI0.LPCB, DeviceObj)
     External (_SB_.PCI0.SBUS.BUS0, DeviceObj)
 
-    Scope (_SB.PCI0)
-    {
-        Device (MCHC) // MCHC[1]
-        {
-            Name (_ADR, Zero)  // _ADR: Address
-            Method (_STA, 0, NotSerialized)  // _STA: Status
-            {
-                If (_OSI ("Darwin")) 
-                { Return (0x0F) }
-                Return (Zero)
-            }
-        }
-    }
-
     Scope (_SB.PCI0.LPCB)
-    {
-        // Add EC device to load AppleBusPowerController[3]
-        Device (EC)
-        {
-            Name (_HID, "ACID0001")  // _HID: Hardware ID
-            Method (_STA, 0, NotSerialized)  // _STA: Status
-            {
-                If (_OSI ("Darwin")) 
-                { Return (0x0F) }
-                Return (Zero)
-            }
-        }
-        
-        // Intel 300-series PMC support [4]
-        Device (PMCR)
-        {
-            Name (_HID, EisaId ("APP9876"))  // _HID: Hardware ID
-            Method (_STA, 0, NotSerialized)  // _STA: Status
-            {
-                If (_OSI ("Darwin")) 
-                { Return (0x0F) }
-                Return (Zero)
-            }
-            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
-            {
-                Memory32Fixed (ReadWrite,
-                    0xFE000000,         // Address Base
-                    0x00010000,         // Address Length
-                    )
-            })
-        }
-        
+    {   
         Device (DMAC)
         {
             Name (_HID, EisaId ("PNP0200") /* PC-class DMA Controller */)  // _HID: Hardware ID
@@ -98,14 +44,26 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
             
             Method (_STA, 0, NotSerialized)  // _STA: Status
             {
-                If (_OSI ("Darwin")) 
-                { Return (0x0F) }
+                If (_OSI ("Darwin")) { Return (0x0F) }
+                Return (Zero)
+            }
+        }
+    }
+    
+    Scope (_SB.PCI0)
+    {
+        Device (MCHC) // MCHC[2]
+        {
+            Name (_ADR, Zero)  // _ADR: Address
+            Method (_STA, 0, NotSerialized)  // _STA: Status
+            {
+                If (_OSI ("Darwin")) { Return (0x0F) }
                 Return (Zero)
             }
         }
     }
 
-    Device (_SB.PCI0.SBUS.BUS0) // SBUS[1]
+    Device (_SB.PCI0.SBUS.BUS0) // SBUS[2]
     {
         Name (_CID, "smbus")  // _CID: Compatible ID
         Name (_ADR, Zero)  // _ADR: Address
@@ -136,39 +94,6 @@ DefinitionBlock ("", "SSDT", 2, "hack", "PCI0", 0x00000000)
             If (_OSI ("Darwin")) 
             { Return (0x0F) }
             Return (Zero)
-        }
-    }
-
-    Device (MEM2)
-    {
-        Name (_HID, EisaId ("PNP0C01"))
-        Name (_UID, 0x02)
-        Name (CRS, ResourceTemplate ()
-        {
-            Memory32Fixed (ReadWrite,
-                0x20000000,         // Address Base
-                0x00200000,         // Address Length
-                )
-            Memory32Fixed (ReadWrite,
-                0x40000000,         // Address Base
-                0x00200000,         // Address Length
-                )
-        })
-        Method (_CRS, 0, NotSerialized)
-        {
-            Return (CRS)
-        }
-        
-        Method (_STA, 0, NotSerialized)
-        {
-            If (_OSI ("Darwin"))
-            {
-                Return (0x0F)
-            }
-            Else
-            {
-                Return (Zero)
-            }
         }
     }
 }
