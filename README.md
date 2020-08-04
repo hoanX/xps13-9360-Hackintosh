@@ -3,15 +3,15 @@
 | ------------------- | ------------------------------------------------------------ |
 | 电脑型号            | DELL XPS 13-9360                                             |
 | Clover:当前系统版本 | macOS Mojave 10.14.6(18G84) & 10.15(Beta 3)                  |
-| OC:当前系统版本     | macOS Big Sur 11.0 Beta3(20A5323l)                           |
-| BIOS                | 2.12.0 (2.6.2之后的版本有bug内存频率变成1867 MHz,但是不影响安装) |
+| OC:当前系统版本     | macOS Big Sur 11.0 Beta3(20A5323l)& 10.15.6(19G73)           |
+| BIOS                | 2.13.0 (2.6.2之后的版本有bug内存频率变成1867 MHz,但是不影响安装) |
 | 处理器              | Intel Core i7-7560U/i7-8550U                                 |
 | 内存                | 16 GB(DDR3L 2133 MHz)                                        |
 | 硬盘                | SAMSUNG PM961 (512GB)                                        |
 | 显卡                | Intel Iris Plus Graphics 640/UHD 620                         |
 | 显示器              | QHD(Sharp触屏 3200x1800)                                     |
 | 声卡                | ALC256 (ALC3246)                                             |
-| 网卡                | 更换为 DW1830 （原网卡Killer 1535，也可以更换为DW1560,否则无法驱动网卡，蓝牙也有些问题) |
+| 网卡                | 更换为 BCM94360cs2 （原网卡Killer 1535，也可以更换为DW1560/1830/1820A,否则无法驱动网卡，蓝牙也有些问题) |
 
 ![](https://tva1.sinaimg.cn/large/007S8ZIlly1gh3esn9rnvj312s0pq4c1.jpg)
 
@@ -49,6 +49,8 @@
 ### 蓝牙
 
 关于蓝牙问题，将蓝牙目录下BrcmFirmwareData.kext和BrcmPatchRAM2.kext驱动放入clover对应驱动目录或者将BrcmFirmwareRepo.kext和BrcmPatchRAM2.kext放入到系统L/E目录下并重建缓存，官方解释说放到系统种内存效率更高，目前没看出来差别，BT4LEContiunityFixup.kext是修复Handoff功能，我没有需求，没有添加，自行测试,10.15使用10.15文件夹驱动
+
+已更换白果卡,大家自行解决,最新蓝牙下载地址：https://github.com/acidanthera/BrcmPatchRAM/releases
 
 ### WIFI
 
@@ -122,7 +124,7 @@ sudo chflags uchg /private/var/vm/sleepimage
 
 ---------
 
-**方式一**（推荐）：此方法有风险，目前bios在2.3.1到2.9.0中参数可用，其它自行测试
+**方式一**（推荐）：此方法有风险，目前bios在2.3.1到2.13.0中参数可用，其它自行测试
 
 使用DVMT目录下的DVMT.efi引导启动，0x785是DVMT Pre-allocation，首先命令 `setup_var 0x785` 回车，查看有无返回值，未修改是返回0x01(32M),**如果没有返回值，切勿继续尝试以下操作**。其它2个参数也是类似命令，查看有无返回值，**没有返回值，切勿继续尝试以下操作**
 
@@ -157,6 +159,10 @@ sudo chflags uchg /private/var/vm/sleepimage
 ~~DVMT补丁在KextsToPatch中，默认添加，但是未开启，有需要自行打开~~
 
 -----------------
+
+### 2020-08-04 更新OpenCore(0.60正式版)支持macOS Big Sur
+
+- 常规更新0.60正式版和最新的驱动（voodinput.kext还是老版本和VoodooI2C不兼容），不再需要FakeSMC.kext和vsmcgen=1参数
 
 ### 2020-07-25 更新OpenCore支持macOS Big Sur（0.60测试版）
 
