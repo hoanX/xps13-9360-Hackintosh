@@ -261,8 +261,6 @@
 			<false/>
 			<key>ProvideCustomSlide</key>
 			<true/>
-			<key>ProvideMaxSlide</key>
-			<integer>0</integer>
 			<key>RebuildAppleMemoryMap</key>
 			<false/>
 			<key>SetupVirtualMap</key>
@@ -299,7 +297,7 @@
 				<key>framebuffer-stolenmem</key>
 				<data>AAAABQ==</data>
 				<key>model</key>
-				<string>Intel Iris Plus Graphics 655</string>
+				<string>Intel Iris Plus Graphics</string>
 			</dict>
 		</dict>
 		<key>Delete</key>
@@ -356,9 +354,25 @@
 				<key>ExecutablePath</key>
 				<string>Contents/MacOS/WhateverGreen</string>
 				<key>MaxKernel</key>
-				<string></string>
+				<string>19.9.9</string>
 				<key>MinKernel</key>
 				<string></string>
+				<key>PlistPath</key>
+				<string>Contents/Info.plist</string>
+			</dict>
+			<dict>
+				<key>BundlePath</key>
+				<string>WhateverGreen141.kext</string>
+				<key>Comment</key>
+				<string></string>
+				<key>Enabled</key>
+				<true/>
+				<key>ExecutablePath</key>
+				<string>Contents/MacOS/WhateverGreen</string>
+				<key>MaxKernel</key>
+				<string></string>
+				<key>MinKernel</key>
+				<string>20.0.0</string>
 				<key>PlistPath</key>
 				<string>Contents/Info.plist</string>
 			</dict>
