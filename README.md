@@ -3,7 +3,7 @@
 | ------------------- | ------------------------------------------------------------ |
 | 电脑型号            | DELL XPS 13-9360                                             |
 | Clover:当前系统版本 | macOS Mojave 10.14.6(18G84) & 10.15(Beta 3)                  |
-| OC:当前系统版本     | macOS Big Sur 11.0 Beta3(20A5323l)& 10.15.6(19G73)           |
+| OC:当前系统版本     | macOS Big Sur 11.0 Beta4(20A5343i)& 10.15.6(19G73)           |
 | BIOS                | 2.13.0 (2.6.2之后的版本有bug内存频率变成1867 MHz,但是不影响安装) |
 | 处理器              | Intel Core i7-7560U/i7-8550U                                 |
 | 内存                | 16 GB(DDR3L 2133 MHz)                                        |
@@ -13,7 +13,7 @@
 | 声卡                | ALC256 (ALC3246)                                             |
 | 网卡                | 更换为 BCM94360cs2 （原网卡Killer 1535，也可以更换为DW1560/1830/1820A,否则无法驱动网卡，蓝牙也有些问题) |
 
-![](https://tva1.sinaimg.cn/large/007S8ZIlly1gh3esn9rnvj312s0pq4c1.jpg)
+![截屏2020-08-08 下午8.25.23](https://tva1.sinaimg.cn/large/007S8ZIlly1ghlgtq80pdj312s0pq169.jpg)
 
 ## 系统安装后注意事项
 
@@ -159,6 +159,11 @@ sudo chflags uchg /private/var/vm/sleepimage
 ~~DVMT补丁在KextsToPatch中，默认添加，但是未开启，有需要自行打开~~
 
 -----------------
+
+### 2020-08-10 
+
+- 更新voodooi2c kext
+- Macos 11.0以下版本使用老版本wtg，暂时解决10.15.6版本及以下睡眠唤醒后大概率卡顿（gpu满载造成的卡顿）
 
 ### 2020-08-04 更新OpenCore(0.60正式版)支持macOS Big Sur
 
