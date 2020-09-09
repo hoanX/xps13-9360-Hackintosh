@@ -160,6 +160,10 @@ sudo chflags uchg /private/var/vm/sleepimage
 
 -----------------
 
+### 2020-09-09 OpenCore
+
+- 日常更新OpenCore 0.6.1 & 最近驱动
+
 ### 2020-08-10 
 
 - 更新voodooi2c kext
