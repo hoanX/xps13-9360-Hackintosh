@@ -3,7 +3,7 @@
 | ------------------- | ------------------------------------------------------------ |
 | 电脑型号            | DELL XPS 13-9360                                             |
 | Clover:当前系统版本 | macOS Mojave 10.14.6(18G84) & 10.15(Beta 3)                  |
-| OC:当前系统版本     | macOS Big Sur 11.0 Beta4(20A5343i)& 10.15.6(19G73)           |
+| OC:当前系统版本     | macOS Big Sur 11.0.1 Beta(20B5022a)& 10.15.7 (19H15)         |
 | BIOS                | 2.13.0 (2.6.2之后的版本有bug内存频率变成1867 MHz,但是不影响安装) |
 | 处理器              | Intel Core i7-7560U/i7-8550U                                 |
 | 内存                | 16 GB(DDR3L 2133 MHz)                                        |
@@ -13,7 +13,7 @@
 | 声卡                | ALC256 (ALC3246)                                             |
 | 网卡                | 更换为 BCM94360cs2 （原网卡Killer 1535，也可以更换为DW1560/1830/1820A,否则无法驱动网卡，蓝牙也有些问题) |
 
-![截屏2020-08-08 下午8.25.23](https://tva1.sinaimg.cn/large/007S8ZIlly1ghlgtq80pdj312s0pq169.jpg)
+![](https://tva1.sinaimg.cn/large/0081Kckwly1gkgj9q0tobj312s0pq16j.jpg)
 
 ## 系统安装后注意事项
 
@@ -160,9 +160,13 @@ sudo chflags uchg /private/var/vm/sleepimage
 
 -----------------
 
+### 2020-11-07 OpenCore
+
+- 日常更新OpenCore 0.6.3 & 最新驱动
+
 ### 2020-09-09 OpenCore
 
-- 日常更新OpenCore 0.6.1 & 最近驱动
+- 日常更新OpenCore 0.6.1 & 最新驱动
 
 ### 2020-08-10 
 

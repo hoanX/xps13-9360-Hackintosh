@@ -32,4 +32,19 @@ DefinitionBlock ("", "SSDT", 2, "hack", "TYPC", 0x00000000)
             }
 		}
      }
+    
+    Scope (\_GPE)
+    {
+        Method (YTBT, 2, NotSerialized)
+        {
+            If ((Arg0 == Arg1)) //Gets rid of a warning. We want this method to always return 0.
+            {
+                Return (Zero)    
+            }
+            Else
+            {
+                Return (Zero)    
+            }
+        }
+    }
 }
