@@ -33,6 +33,8 @@
 
 4. 插入耳机选择Headset,这样耳机和耳麦都正常工作 
 
+
+
 ### 网卡
 
 1. 无线频段不够的可以在config中的Boot参数Arguments中添加`brcmfx-country=#a`,重启即可
@@ -40,11 +42,17 @@
 2. 最新版本的AirportBrcmFixup在DW1830下显示网卡为第三方，使用没有影响，可以使用1.1.6版本还原
 3. 苹果原装网卡需要添加AirportBrcmFixup驱动，否则睡眠有时候会被唤醒
 
+
+
 ### 显示器
 
 如果QHD分辨率设备，在开机第二阶段苹果logo变大，在config的Boot Graphics的UIScale中填入`2`，重启即可
 
+FHD或者外接显示器需要开启HIDPI，可以参考[xzhih/one-key-hidpi](https://github.com/xzhih/one-key-hidpi)
+
 校色文件：Displays/RXN49_LQ133Z1_01.icm的文件是QHD的屏幕校色文件（来自：[grawlinson](https://github.com/grawlinson/dell-xps-9360/tree/master/display)），复制到`/Users/<username>/Library/ColorSync/Profiles`或者`/Library/ColorSync/Profiles`下，然后显示器偏好设置的颜色选择
+
+
 
 ### 蓝牙
 
@@ -52,19 +60,25 @@
 
 已更换白果卡,大家自行解决,最新蓝牙下载地址：https://github.com/acidanthera/BrcmPatchRAM/releases
 
+
+
 ### WIFI
 
 关于WIFI问题，如果WIFI无法驱动，添加WIFI目录下的驱动，DW1830不需要，DW1560可能需要
 
+
+
 ### CPU
 
-有低频需求的，建议使用`https://github.com/stevezhengshiqi/one-key-cpufriend`的脚本根据自己需求定制，有多种选择
+有低频需求的，建议使用[stevezhengshiqi/one-key-cpufriend](https://github.com/stevezhengshiqi/one-key-cpufriend)的脚本根据自己需求定制，有多种选择
 
 或者以下脚本
 
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/stevezhengshiqi/one-key-cpufriend/master/one-key-cpufriend_cn.sh)"
 ```
+
+
 
 ### USB
 
@@ -75,13 +89,41 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/stevezhengshiqi/one-key-
 第二种方式，目前默认的方式，有个弊端，就是修改smbios后导致所有sub失效，需要修改USBPorts.kext,我默认添加了一个kext/USB/usbport/mbp14,1/USBPorts.kext,这个支持smbios为mbp14,1，替换原来的就好了，如果想更改其他smbios，教程如下：
 
 1. 右键USBPorts.kext显示包内容
-
 2. 随便一个文本工具打开Contents的Info.plist，修改几个信息即可
+
+
+
+### 摄像头
+
+> ProductID_22155   	(0x568b)
+>
+> VendorID_3034      	(0x0bda Realtek Semiconductor Corp.)
+
+10.15及以上系统可不添加驱动即可正常使用，但是摄像头硬件存在差异，有不同的设备id，可能部分设备无法使用，可以尝试添加以下驱动之一(kexts目录下)
+
+[UVC2FaceTimeHD.kext](./kexts/UVC2FaceTimeHD.kext)
+
+[FaceTimeHD.kext](./kexts/FaceTimeHD.kext)
+
+
+
+### SD卡驱动
+
+可尝试以下驱动，由于我没有相关设备，大家自行测试
+
+[cholonam/Sinetek-rtsx ](https://github.com/cholonam/Sinetek-rtsx/releases)
 
 ### 重建缓存
 
 ```
+# 重建缓存
 sudo kextcache -i /
+
+# 某些原因更改了L/E或S/L/E驱动
+sudo chown -R root:wheel /System/Library/Extensions/
+sudo chmod -R 755 /System/Library/Extensions/
+sudo kmutil install --update-all
+sudo kcditto
 ```
 
 ### 睡眠模式（更好的睡眠）
@@ -97,16 +139,18 @@ sudo chflags uchg /private/var/vm/sleepimage
 
 
 
-#### 已知问题
+### 已知问题
 
-- sd读卡器无法使用(BIOS可以关闭，节省电量)
+- ~~sd读卡器无法使用~~(BIOS可以关闭，节省电量)
 - ~~雷电口需要开启前或者睡眠唤醒前插上，冷启动才会生效（生效后热插拔正常）~~
 - ~~耳机麦克风不工作（电脑麦克风正常，插耳机时使用电脑麦克风）~~
 - ~~睡眠前耳机没有拔下，唤醒后耳机可能无声，重新插拔下即可~~(ComboJack可能也把这个修复了)
 - ~~蓝牙长时间睡眠后唤醒可能不工作，可能需要重新睡眠唤醒或者重启~~（新版本usbports.kext蓝牙不内建，同时关闭蓝牙高级选项，大幅改善问题，出问题几率很小）
 - ~~Intel Iris Plus Graphics 640睡眠唤醒后有几率黑屏~~，WhateverGreen的framebuffer-flags补丁fixed
 
-#### BIOS推荐设置
+
+
+### BIOS推荐设置
 
 - Sata: AHCI
 - Disable Secure Boot
@@ -157,6 +201,11 @@ sudo chflags uchg /private/var/vm/sleepimage
 ~~DVMT补丁在KextsToPatch中，默认添加，但是未开启，有需要自行打开~~
 
 -----------------
+
+### 2020-11-24 OpenCore
+
+- 修复Big Sur下电源键唤醒没有立刻亮屏
+- 删除acpi亮度按键补丁替换为BrightnessKeys.kext
 
 ### 2020-11-07 OpenCore
 
