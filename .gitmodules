@@ -1,0 +1,3 @@
+[submodule "kexts/ComboJack"]
+	path = kexts/ComboJack
+	url = git@github.com:hackintosh-stuff/ComboJack.git
