@@ -202,6 +202,10 @@ sudo chflags uchg /private/var/vm/sleepimage
 
 -----------------
 
+### 2021-01-12 OpenCore
+
+- OC 0.6.5
+
 ### 2020-11-24 OpenCore
 
 - 修复Big Sur下电源键唤醒没有立刻亮屏
