@@ -3,7 +3,7 @@
 | ------------------- | ------------------------------------------------------------ |
 | 电脑型号            | DELL XPS 13-9360                                             |
 | Clover:当前系统版本 | macOS Mojave 10.14.6(18G84) & 10.15(Beta 3)                  |
-| OC:当前系统版本     | macOS Big Sur 11.0.1 (20B29) & 10.15.7 (19H15)         |
+| OC:当前系统版本     | macOS Big Sur 11.2.2 (20D80)                                 |
 | BIOS                | 2.13.0 (2.6.2之后的版本有bug内存频率变成1867 MHz,但是不影响安装) |
 | 处理器              | Intel Core i7-7560U/i7-8550U                                 |
 | 内存                | 16 GB(DDR3L 2133 MHz)                                        |
@@ -201,6 +201,10 @@ sudo chflags uchg /private/var/vm/sleepimage
 ~~DVMT补丁在KextsToPatch中，默认添加，但是未开启，有需要自行打开~~
 
 -----------------
+
+### 2021-03-03 OpenCore
+
+- OC 0.6.7
 
 ### 2021-01-12 OpenCore
 
