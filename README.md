@@ -1,4 +1,7 @@
+
+
 # XPS 13-9360 Big Sur
+
 | 类别                | 详细信息                                                     |
 | ------------------- | ------------------------------------------------------------ |
 | 电脑型号            | DELL XPS 13-9360                                             |
@@ -177,6 +180,18 @@ sudo chflags uchg /private/var/vm/sleepimage
  `setup_var 0x785 0x06 `  :这里我直接设置到192M,FHD设置`setup_var 0x785 0x02 `即可 
 
  `setup_var 0x786 0x03 ` 
+
+options：
+
+- setup_var 0x4DF 0x00 (default)
+- setup_var 0x4DF 0x01 (battery life)
+- setup_var 0x4DF 0x02 (performance)
+- setup_var 0x64D 0x01
+- setup_var 0x64E 0x01
+- `0x653` -> `0x64` (CPU: -100 mV)
+- `0x655` -> `01` (Negative voltage for `0x653`)
+- `0x85A` -> `0x1E` (GPU: -30 mV)
+- `0x85C` -> `01` (Negative voltage for `0x85A`)
 
 | Variable              | Offset | Default value  | Desired value   | Comment                                                    |
 | --------------------- | ------ | -------------- | --------------- | ---------------------------------------------------------- |
