@@ -16,7 +16,7 @@
 | 声卡                | ALC256 (ALC3246)                                             |
 | 网卡                | 更换为 BCM94360cs2 （原网卡Killer 1535，也可以更换为DW1560/1830/1820A,否则无法驱动网卡，蓝牙也有些问题) |
 
-![](https://hoan-pic.oss-cn-hangzhou.aliyuncs.com/img/截屏2021-11-10 下午11.13.39.png)
+![](./info.png)
 
 ## 系统安装后注意事项
 
