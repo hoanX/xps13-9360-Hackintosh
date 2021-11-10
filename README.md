@@ -1,12 +1,12 @@
 
 
-# XPS 13-9360 Big Sur
+# XPS 13-9360 Monterey
 
 | 类别                | 详细信息                                                     |
 | ------------------- | ------------------------------------------------------------ |
 | 电脑型号            | DELL XPS 13-9360                                             |
 | Clover:当前系统版本 | macOS Mojave 10.14.6(18G84) & 10.15(Beta 3)                  |
-| OC:当前系统版本     | macOS Big Sur 11.2.2 (20D80)                                 |
+| OC:当前系统版本     | macOS Monterey 12.0.1 (21A559)                               |
 | BIOS                | 2.13.0 (2.6.2之后的版本有bug内存频率变成1867 MHz,但是不影响安装) |
 | 处理器              | Intel Core i7-7560U/i7-8550U                                 |
 | 内存                | 16 GB(DDR3L 2133 MHz)                                        |
@@ -16,7 +16,7 @@
 | 声卡                | ALC256 (ALC3246)                                             |
 | 网卡                | 更换为 BCM94360cs2 （原网卡Killer 1535，也可以更换为DW1560/1830/1820A,否则无法驱动网卡，蓝牙也有些问题) |
 
-![](https://tva1.sinaimg.cn/large/0081Kckwly1gknhjsa28qj312s0pq7i0.jpg)
+![](https://hoan-pic.oss-cn-hangzhou.aliyuncs.com/img/截屏2021-11-10 下午11.13.39.png)
 
 ## 系统安装后注意事项
 
@@ -216,6 +216,11 @@ options：
 ~~DVMT补丁在KextsToPatch中，默认添加，但是未开启，有需要自行打开~~
 
 -----------------
+
+### 2021-11-10 OpenCore（Monterey）
+
+- OC 0.7.5
+- kext
 
 ### 2021-03-03 OpenCore
 
